@@ -5,38 +5,42 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Danang — Server & Cloud Engineer</title>
 <style>
-
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Quicksand',-apple-system,sans-serif;line-height:1.6;font-weight:500}
 
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
-
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:'Quicksand',-apple-system,sans-serif;line-height:1.6;font-weight:500}
-
-.light { --bg:#f8f9fb; --bg-card:#fff; --text:#1a1a2e; --muted:#6b7280; --border:#e5e7eb; --red:#e53e3e; --red-light:#fff5f5; --red-dark:#c53030; --blue:#3182ce; --blue-light:#ebf8ff; --green:#38a169; --green-light:#f0fff4; }
-.dark  { --bg:#111827; --bg-card:#1f2937; --text:#f3f4f6; --muted:#9ca3af; --border:#374151; --red:#e53e3e; --red-light:#3b1515; --red-dark:#c53030; --blue:#3182ce; --blue-light:#15223b; --green:#38a169; --green-light:#153b21; }
+:root {
+  --bg:#f8f9fb; --bg-card:#fff; --text:#1a1a2e; --muted:#6b7280; --border:#e5e7eb;
+  --red:#e53e3e; --red-light:#fff5f5; --red-dark:#c53030;
+  --blue:#3182ce; --blue-light:#ebf8ff;
+  --green:#38a169; --green-light:#f0fff4;
+}
+.dark {
+  --bg:#111827; --bg-card:#1f2937; --text:#f3f4f6; --muted:#9ca3af; --border:#374151;
+  --red-light:#3b1515; --blue-light:#15223b; --green-light:#153b21;
+}
 
 body{background:var(--bg);color:var(--text);transition:background 0.3s,color 0.3s}
 
 nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;justify-content:space-between;align-items:center}
-nav .logo{font-size:20px;font-weight:700;display:flex;align-items:center;gap:8px}
+.dark nav{background:var(--bg)}
+nav .logo{font-size:20px;font-weight:700;display:flex;align-items:center;gap:8px;color:var(--text);text-decoration:none}
 nav .logo .dot{width:8px;height:8px;background:var(--red);border-radius:50%}
-nav .nav-links{display:flex;gap:4px;align-items:center}
-nav .nav-links a{color:var(--muted);font-size:13px;font-weight:600;padding:8px 14px;border-radius:20px;transition:all 0.2s}
+nav .nav-links{display:flex;gap:4px;align-items:center;list-style:none}
+nav .nav-links a{color:var(--muted);font-size:13px;font-weight:600;padding:8px 14px;border-radius:20px;transition:all 0.2s;text-decoration:none}
 nav .nav-links a:hover{color:var(--red);background:var(--red-light)}
 nav .right{display:flex;align-items:center;gap:8px}
-nav .theme-btn{background:var(--bg-card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:50%;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;cursor:pointer}
+nav .theme-btn{background:var(--bg-card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:50%;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s}
 nav .theme-btn:hover{border-color:var(--red)}
 nav .menu-btn{display:none;background:var(--red);color:#fff;padding:10px 18px;border-radius:20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;border:none;cursor:pointer}
-nav .nav-cta{background:var(--red);color:#fff!important;padding:10px 20px;border-radius:20px;font-weight:700}
-nav .nav-cta:hover{background:var(--red-dark);color:#fff!important}
+nav .nav-cta{background:var(--red)!important;color:#fff!important;padding:10px 20px;border-radius:20px;font-weight:700}
+nav .nav-cta:hover{background:var(--red-dark)!important;color:#fff!important}
 
 .mobile-drawer{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transform:translateY(-100%);transition:transform 0.3s}
 .mobile-drawer.active{transform:translateY(0)}
-.mobile-drawer a{font-size:20px;font-weight:700;color:var(--text)}
+.mobile-drawer a{font-size:20px;font-weight:700;color:var(--text);text-decoration:none}
 .mobile-drawer .close-btn{position:absolute;top:16px;right:24px;background:var(--bg-card);border:1px solid var(--border);color:var(--text);padding:10px 18px;border-radius:20px;font-weight:700;font-size:12px;cursor:pointer}
 
 .container{max-width:1024px;margin:0 auto;padding:0 24px}
@@ -47,7 +51,7 @@ nav .nav-cta:hover{background:var(--red-dark);color:#fff!important}
 .hero h1 span{color:var(--red);text-decoration:underline;text-underline-offset:6px}
 .hero p{font-size:16px;color:var(--muted);max-width:540px;margin:0 auto 28px;line-height:1.8}
 .hero .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.hero .hero-btns a{padding:12px 28px;border-radius:24px;font-weight:700;font-size:14px;transition:all 0.2s}
+.hero .hero-btns a{padding:12px 28px;border-radius:24px;font-weight:700;font-size:14px;transition:all 0.2s;text-decoration:none}
 .hero .hero-btns a.primary{background:var(--red);color:#fff}
 .hero .hero-btns a.primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 6px 24px rgba(229,62,62,0.25)}
 .hero .hero-btns a.outline{background:var(--bg-card);color:var(--text);border:1.5px solid var(--border)}
@@ -84,7 +88,7 @@ nav .nav-cta:hover{background:var(--red-dark);color:#fff!important}
 .cta .section-label{color:rgba(255,255,255,0.7)}
 .cta h2{font-size:30px;font-weight:700;margin-bottom:8px}
 .cta p{font-size:15px;margin-bottom:24px;opacity:0.85}
-.cta a.cta-btn{display:inline-block;background:#fff;color:var(--red);font-weight:700;font-size:14px;padding:14px 34px;border-radius:24px;transition:all 0.2s}
+.cta a.cta-btn{display:inline-block;background:#fff;color:var(--red);font-weight:700;font-size:14px;padding:14px 34px;border-radius:24px;transition:all 0.2s;text-decoration:none}
 .cta a.cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.15)}
 .cta .contact-info{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px}
 .cta .contact-info div{background:rgba(255,255,255,0.1);border-radius:12px;padding:16px 24px;text-align:center;min-width:160px}
@@ -94,13 +98,20 @@ nav .nav-cta:hover{background:var(--red-dark);color:#fff!important}
 footer{padding:32px 0;text-align:center}
 footer p{font-size:11px;color:var(--muted);font-weight:600}
 
-@media(max-width:768px){nav .nav-links,nav .nav-cta{display:none}nav .menu-btn{display:block}.hero h1{font-size:32px}.hero-stats{gap:6px}.hero-stats .hs{padding:14px 18px}.hero-stats .hs .v{font-size:20px}.services-grid{grid-template-columns:1fr}.section-title{font-size:24px}.cta h2{font-size:26px}.section{padding:48px 0}.hero{padding:48px 0 36px}}
-
-
+@media(max-width:768px){
+  nav .nav-links,nav .nav-cta{display:none}
+  nav .menu-btn{display:block}
+  .hero h1{font-size:32px}
+  .hero-stats{gap:6px}.hero-stats .hs{padding:14px 18px}.hero-stats .hs .v{font-size:20px}
+  .services-grid{grid-template-columns:1fr}
+  .section-title{font-size:24px}
+  .cta h2{font-size:26px}
+  .section{padding:48px 0}
+  .hero{padding:48px 0 36px}
+}
 </style>
 </head>
 <body class="light">
-
 
 <nav>
   <a href="#" class="logo"><span class="dot"></span> danang</a>
@@ -146,12 +157,12 @@ footer p{font-size:11px;color:var(--muted);font-weight:600}
     <span class="section-label">Services</span>
     <h2 class="section-title">What I Do</h2>
     <div class="services-grid">
-      <div class="card"><div class="card-icon red">&#x1F5A5;</div><h3>Server Management</h3><p>Setup, hardening, maintenance Linux/Windows. 24/7 monitoring. Patch management &amp; disaster recovery.</p></div>
-      <div class="card"><div class="card-icon blue">&#x2601;</div><h3>Cloud Infrastructure</h3><p>AWS, GCP, Azure &mdash; migration, optimization, auto-scaling. Infrastructure as Code &amp; cost optimization.</p></div>
-      <div class="card"><div class="card-icon green">&#x1F512;</div><h3>Network &amp; Security</h3><p>Firewall, VPN, IDS/IPS, WAF. Server hardening, security audit, SSL/TLS management.</p></div>
-      <div class="card"><div class="card-icon red">&#x1F433;</div><h3>Docker &amp; Kubernetes</h3><p>Containerization &amp; orchestration. Docker Compose to production K8s. CI/CD pipeline.</p></div>
-      <div class="card"><div class="card-icon blue">&#x1F5C4;</div><h3>Database Admin</h3><p>PostgreSQL, MySQL, MongoDB &mdash; setup, replication, backup, tuning. High availability.</p></div>
-      <div class="card"><div class="card-icon green">&#x1F4CA;</div><h3>Monitoring &amp; Logging</h3><p>Wazuh, Grafana, Prometheus, ELK Stack. Alerting system &amp; custom dashboards.</p></div>
+      <div class="card"><div class="card-icon red">&#x1F5A5;</div><h3>Server Management</h3><p>Setup, hardening, maintenance Linux/Windows. 24/7 monitoring &amp; disaster recovery.</p></div>
+      <div class="card"><div class="card-icon blue">&#x2601;</div><h3>Cloud Infrastructure</h3><p>AWS, GCP, Azure &mdash; migration, optimization, auto-scaling. Infrastructure as Code.</p></div>
+      <div class="card"><div class="card-icon green">&#x1F512;</div><h3>Network &amp; Security</h3><p>Firewall, VPN, IDS/IPS, WAF. Server hardening, security audit, SSL/TLS.</p></div>
+      <div class="card"><div class="card-icon red">&#x1F433;</div><h3>Docker &amp; Kubernetes</h3><p>Containerization &amp; orchestration. Docker Compose to production K8s cluster.</p></div>
+      <div class="card"><div class="card-icon blue">&#x1F5C4;</div><h3>Database Admin</h3><p>PostgreSQL, MySQL, MongoDB &mdash; setup, replication, backup, tuning.</p></div>
+      <div class="card"><div class="card-icon green">&#x1F4CA;</div><h3>Monitoring &amp; Logging</h3><p>Wazuh, Grafana, Prometheus, ELK Stack. Custom dashboards.</p></div>
     </div>
   </div>
 </section>
@@ -186,17 +197,15 @@ footer p{font-size:11px;color:var(--muted);font-weight:600}
 
 <footer><div class="container"><p>&copy; 2026 Danang &mdash; Server & Cloud Engineer</p></div></footer>
 
-
-
 <script>
 function toggleTheme(){
   var h=document.documentElement;
   if(h.classList.contains('light')){
     h.classList.remove('light');h.classList.add('dark');
-    document.querySelector('.theme-btn').innerHTML='☾';
+    document.querySelector('.theme-btn').innerHTML='\u263e';
   }else{
     h.classList.remove('dark');h.classList.add('light');
-    document.querySelector('.theme-btn').innerHTML='☀️';
+    document.querySelector('.theme-btn').innerHTML='\u2600\ufe0f';
   }
 }
 function openMenu(){document.getElementById('mobileDrawer').classList.add('active')}
