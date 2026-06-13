@@ -113,10 +113,10 @@ function toggleTheme(){
   var h=d.documentElement;
   if(h.classList.contains("light")){
     h.classList.remove("light");h.classList.add("dark");
-    d.querySelector(".theme-btn").innerHTML="☾";
+    d.querySelector(".theme-btn").innerHTML="\u263e";
   }else{
     h.classList.remove("dark");h.classList.add("light");
-    d.querySelector(".theme-btn").innerHTML="☀️";
+    d.querySelector(".theme-btn").innerHTML="\u2600\ufe0f";
   }
 }
 function openMenu(){var m=d.getElementById("mobileDrawer");if(m)m.classList.add("active")}
