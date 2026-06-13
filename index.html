@@ -280,6 +280,34 @@ fetch(blogJson)
   })
   .catch(function(){document.getElementById('blogGrid').innerHTML='<p style=\"color:var(--muted)\">Articles coming soon.</p>'});
 
+// DevTools detection
+(function(){
+  var devtoolsOpen=false;
+  var check=function(){
+    var threshold=160;
+    var widthThreshold=window.outerWidth-window.innerWidth>threshold;
+    var heightThreshold=window.outerHeight-window.innerHeight>threshold;
+    if(widthThreshold||heightThreshold){
+      if(!devtoolsOpen){
+        devtoolsOpen=true;
+        document.body.innerHTML='<div style=\"display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#999;text-align:center\"><div><h1 style=\"font-size:24px;color:#e53e3e\">DevTools Detected</h1><p>Please close Developer Tools to view this page.</p></div></div>';
+      }
+    }else{
+      if(devtoolsOpen){
+        devtoolsOpen=false;
+        location.reload();
+      }
+    }
+  };
+  setInterval(check,1000);
+
+  // Debugger detection
+  var start=new Date();debugger;var end=new Date();
+  if(end-start>100){
+    document.body.innerHTML='<div style=\"display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#999;text-align:center\"><div><h1 style=\"font-size:24px;color:#e53e3e\">DevTools Detected</h1><p>Please close Developer Tools to view this page.</p></div></div>';
+  }
+})();
+
 function openModal(id){
   var p=allPosts.find(function(x){return x.id===id});
   if(!p) return;
