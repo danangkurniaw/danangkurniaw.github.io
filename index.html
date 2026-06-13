@@ -6,7 +6,6 @@
 <title>Danang — Server & Cloud Engineer</title>
 <style>
 
-
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -98,29 +97,110 @@ footer p{font-size:11px;color:var(--muted);font-weight:600}
 @media(max-width:768px){nav .nav-links,nav .nav-cta{display:none}nav .menu-btn{display:block}.hero h1{font-size:32px}.hero-stats{gap:6px}.hero-stats .hs{padding:14px 18px}.hero-stats .hs .v{font-size:20px}.services-grid{grid-template-columns:1fr}.section-title{font-size:24px}.cta h2{font-size:26px}.section{padding:48px 0}.hero{padding:48px 0 36px}}
 
 
-
 </style>
 </head>
 <body class="light">
-<div id="ldr" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#999;font-size:14px;background:#f8f9fb">Loading...</div>
+
+
+<nav>
+  <a href="#" class="logo"><span class="dot"></span> danang</a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="right">
+    <button class="theme-btn" onclick="toggleTheme()" title="Dark mode">&#9728;&#65039;</button>
+    <button class="menu-btn" onclick="openMenu()">MENU</button>
+  </div>
+</nav>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <button class="close-btn" onclick="closeMenu()">CLOSE</button>
+  <a href="#" onclick="closeMenu()">Home</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#stack" onclick="closeMenu()">Stack</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">Available for Work</span>
+    <h1>Infrastructure <span>that works.</span></h1>
+    <p>On-premise or cloud servers &mdash; professionally managed. Deploy, monitor, secure, scale. You focus on business, I handle the tech.</p>
+    <div class="hero-btns">
+      <a href="#services" class="primary">View Services</a>
+      <a href="https://wa.me/6289777054599" class="outline">Contact Me</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><span class="v">6+</span><span class="l">Years Experience</span></div>
+      <div class="hs"><span class="v">50+</span><span class="l">Servers Managed</span></div>
+      <div class="hs"><span class="v">99.9%</span><span class="l">Uptime</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="container">
+    <span class="section-label">Services</span>
+    <h2 class="section-title">What I Do</h2>
+    <div class="services-grid">
+      <div class="card"><div class="card-icon red">&#x1F5A5;</div><h3>Server Management</h3><p>Setup, hardening, maintenance Linux/Windows. 24/7 monitoring. Patch management &amp; disaster recovery.</p></div>
+      <div class="card"><div class="card-icon blue">&#x2601;</div><h3>Cloud Infrastructure</h3><p>AWS, GCP, Azure &mdash; migration, optimization, auto-scaling. Infrastructure as Code &amp; cost optimization.</p></div>
+      <div class="card"><div class="card-icon green">&#x1F512;</div><h3>Network &amp; Security</h3><p>Firewall, VPN, IDS/IPS, WAF. Server hardening, security audit, SSL/TLS management.</p></div>
+      <div class="card"><div class="card-icon red">&#x1F433;</div><h3>Docker &amp; Kubernetes</h3><p>Containerization &amp; orchestration. Docker Compose to production K8s. CI/CD pipeline.</p></div>
+      <div class="card"><div class="card-icon blue">&#x1F5C4;</div><h3>Database Admin</h3><p>PostgreSQL, MySQL, MongoDB &mdash; setup, replication, backup, tuning. High availability.</p></div>
+      <div class="card"><div class="card-icon green">&#x1F4CA;</div><h3>Monitoring &amp; Logging</h3><p>Wazuh, Grafana, Prometheus, ELK Stack. Alerting system &amp; custom dashboards.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stack" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <span class="section-label">Stack</span>
+    <h2 class="section-title">Tools &amp; Technology</h2>
+    <div class="stack-wrap">
+      <span>Linux</span><span>Docker</span><span>Kubernetes</span><span>AWS</span><span>GCP</span>
+      <span>Terraform</span><span>Ansible</span><span>Nginx</span><span>PostgreSQL</span>
+      <span>MySQL</span><span>Redis</span><span>Wazuh</span><span>Grafana</span>
+      <span>Prometheus</span><span>ELK</span><span>Git</span><span>CI/CD</span>
+      <span>Cloudflare</span><span>WireGuard</span><span>Bash</span><span>Python</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <span class="section-label">Contact</span>
+    <h2>Need Server Management?</h2>
+    <p>Setup, migration, maintenance &mdash; free consultation. No commitment.</p>
+    <a href="https://wa.me/6289777054599" class="cta-btn">Chat via WhatsApp</a>
+    <div class="contact-info">
+      <div><span class="lbl">WhatsApp</span><span class="val">089777054599</span></div>
+      <div><span class="lbl">Email</span><span class="val">danangkurniawan@proton.me</span></div>
+      <div><span class="lbl">Location</span><span class="val">Cilacap, Indonesia</span></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container"><p>&copy; 2026 Danang &mdash; Server & Cloud Engineer</p></div></footer>
+
+
+
 <script>
-var b=atob("CgoKPG5hdj4KICA8YSBocmVmPSIjIiBjbGFzcz0ibG9nbyI+PHNwYW4gY2xhc3M9ImRvdCI+PC9zcGFuPiBkYW5hbmc8L2E+CiAgPHVsIGNsYXNzPSJuYXYtbGlua3MiPgogICAgPGxpPjxhIGhyZWY9IiMiPkhvbWU8L2E+PC9saT4KICAgIDxsaT48YSBocmVmPSIjc2VydmljZXMiPlNlcnZpY2VzPC9hPjwvbGk+CiAgICA8bGk+PGEgaHJlZj0iI3N0YWNrIj5TdGFjazwvYT48L2xpPgogICAgPGxpPjxhIGhyZWY9IiNjb250YWN0IiBjbGFzcz0ibmF2LWN0YSI+Q29udGFjdDwvYT48L2xpPgogIDwvdWw+CiAgPGRpdiBjbGFzcz0icmlnaHQiPgogICAgPGJ1dHRvbiBjbGFzcz0idGhlbWUtYnRuIiBvbmNsaWNrPSJ0b2dnbGVUaGVtZSgpIiB0aXRsZT0iRGFyayBtb2RlIj4mIzk3Mjg7JiM2NTAzOTs8L2J1dHRvbj4KICAgIDxidXR0b24gY2xhc3M9Im1lbnUtYnRuIiBvbmNsaWNrPSJvcGVuTWVudSgpIj5NRU5VPC9idXR0b24+CiAgPC9kaXY+CjwvbmF2PgoKPGRpdiBjbGFzcz0ibW9iaWxlLWRyYXdlciIgaWQ9Im1vYmlsZURyYXdlciI+CiAgPGJ1dHRvbiBjbGFzcz0iY2xvc2UtYnRuIiBvbmNsaWNrPSJjbG9zZU1lbnUoKSI+Q0xPU0U8L2J1dHRvbj4KICA8YSBocmVmPSIjIiBvbmNsaWNrPSJjbG9zZU1lbnUoKSI+SG9tZTwvYT4KICA8YSBocmVmPSIjc2VydmljZXMiIG9uY2xpY2s9ImNsb3NlTWVudSgpIj5TZXJ2aWNlczwvYT4KICA8YSBocmVmPSIjc3RhY2siIG9uY2xpY2s9ImNsb3NlTWVudSgpIj5TdGFjazwvYT4KICA8YSBocmVmPSIjY29udGFjdCIgb25jbGljaz0iY2xvc2VNZW51KCkiPkNvbnRhY3Q8L2E+CjwvZGl2PgoKPHNlY3Rpb24gY2xhc3M9Imhlcm8iPgogIDxkaXYgY2xhc3M9ImNvbnRhaW5lciI+CiAgICA8c3BhbiBjbGFzcz0iYmFkZ2UiPkF2YWlsYWJsZSBmb3IgV29yazwvc3Bhbj4KICAgIDxoMT5JbmZyYXN0cnVjdHVyZSA8c3Bhbj50aGF0IHdvcmtzLjwvc3Bhbj48L2gxPgogICAgPHA+T24tcHJlbWlzZSBvciBjbG91ZCBzZXJ2ZXJzICZtZGFzaDsgcHJvZmVzc2lvbmFsbHkgbWFuYWdlZC4gRGVwbG95LCBtb25pdG9yLCBzZWN1cmUsIHNjYWxlLiBZb3UgZm9jdXMgb24gYnVzaW5lc3MsIEkgaGFuZGxlIHRoZSB0ZWNoLjwvcD4KICAgIDxkaXYgY2xhc3M9Imhlcm8tYnRucyI+CiAgICAgIDxhIGhyZWY9IiNzZXJ2aWNlcyIgY2xhc3M9InByaW1hcnkiPlZpZXcgU2VydmljZXM8L2E+CiAgICAgIDxhIGhyZWY9Imh0dHBzOi8vd2EubWUvNjI4OTc3NzA1NDU5OSIgY2xhc3M9Im91dGxpbmUiPkNvbnRhY3QgTWU8L2E+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9Imhlcm8tc3RhdHMiPgogICAgICA8ZGl2IGNsYXNzPSJocyI+PHNwYW4gY2xhc3M9InYiPjYrPC9zcGFuPjxzcGFuIGNsYXNzPSJsIj5ZZWFycyBFeHBlcmllbmNlPC9zcGFuPjwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJocyI+PHNwYW4gY2xhc3M9InYiPjUwKzwvc3Bhbj48c3BhbiBjbGFzcz0ibCI+U2VydmVycyBNYW5hZ2VkPC9zcGFuPjwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJocyI+PHNwYW4gY2xhc3M9InYiPjk5LjklPC9zcGFuPjxzcGFuIGNsYXNzPSJsIj5VcHRpbWU8L3NwYW4+PC9kaXY+CiAgICA8L2Rpdj4KICA8L2Rpdj4KPC9zZWN0aW9uPgoKPHNlY3Rpb24gY2xhc3M9InNlY3Rpb24iIGlkPSJzZXJ2aWNlcyI+CiAgPGRpdiBjbGFzcz0iY29udGFpbmVyIj4KICAgIDxzcGFuIGNsYXNzPSJzZWN0aW9uLWxhYmVsIj5TZXJ2aWNlczwvc3Bhbj4KICAgIDxoMiBjbGFzcz0ic2VjdGlvbi10aXRsZSI+V2hhdCBJIERvPC9oMj4KICAgIDxkaXYgY2xhc3M9InNlcnZpY2VzLWdyaWQiPgogICAgICA8ZGl2IGNsYXNzPSJjYXJkIj48ZGl2IGNsYXNzPSJjYXJkLWljb24gcmVkIj4mI3gxRjVBNTs8L2Rpdj48aDM+U2VydmVyIE1hbmFnZW1lbnQ8L2gzPjxwPlNldHVwLCBoYXJkZW5pbmcsIG1haW50ZW5hbmNlIExpbnV4L1dpbmRvd3MuIDI0LzcgbW9uaXRvcmluZy4gUGF0Y2ggbWFuYWdlbWVudCAmYW1wOyBkaXNhc3RlciByZWNvdmVyeS48L3A+PC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9ImNhcmQiPjxkaXYgY2xhc3M9ImNhcmQtaWNvbiBibHVlIj4mI3gyNjAxOzwvZGl2PjxoMz5DbG91ZCBJbmZyYXN0cnVjdHVyZTwvaDM+PHA+QVdTLCBHQ1AsIEF6dXJlICZtZGFzaDsgbWlncmF0aW9uLCBvcHRpbWl6YXRpb24sIGF1dG8tc2NhbGluZy4gSW5mcmFzdHJ1Y3R1cmUgYXMgQ29kZSAmYW1wOyBjb3N0IG9wdGltaXphdGlvbi48L3A+PC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9ImNhcmQiPjxkaXYgY2xhc3M9ImNhcmQtaWNvbiBncmVlbiI+JiN4MUY1MTI7PC9kaXY+PGgzPk5ldHdvcmsgJmFtcDsgU2VjdXJpdHk8L2gzPjxwPkZpcmV3YWxsLCBWUE4sIElEUy9JUFMsIFdBRi4gU2VydmVyIGhhcmRlbmluZywgc2VjdXJpdHkgYXVkaXQsIFNTTC9UTFMgbWFuYWdlbWVudC48L3A+PC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9ImNhcmQiPjxkaXYgY2xhc3M9ImNhcmQtaWNvbiByZWQiPiYjeDFGNDMzOzwvZGl2PjxoMz5Eb2NrZXIgJmFtcDsgS3ViZXJuZXRlczwvaDM+PHA+Q29udGFpbmVyaXphdGlvbiAmYW1wOyBvcmNoZXN0cmF0aW9uLiBEb2NrZXIgQ29tcG9zZSB0byBwcm9kdWN0aW9uIEs4cy4gQ0kvQ0QgcGlwZWxpbmUuPC9wPjwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJjYXJkIj48ZGl2IGNsYXNzPSJjYXJkLWljb24gYmx1ZSI+JiN4MUY1QzQ7PC9kaXY+PGgzPkRhdGFiYXNlIEFkbWluPC9oMz48cD5Qb3N0Z3JlU1FMLCBNeVNRTCwgTW9uZ29EQiAmbWRhc2g7IHNldHVwLCByZXBsaWNhdGlvbiwgYmFja3VwLCB0dW5pbmcuIEhpZ2ggYXZhaWxhYmlsaXR5LjwvcD48L2Rpdj4KICAgICAgPGRpdiBjbGFzcz0iY2FyZCI+PGRpdiBjbGFzcz0iY2FyZC1pY29uIGdyZWVuIj4mI3gxRjRDQTs8L2Rpdj48aDM+TW9uaXRvcmluZyAmYW1wOyBMb2dnaW5nPC9oMz48cD5XYXp1aCwgR3JhZmFuYSwgUHJvbWV0aGV1cywgRUxLIFN0YWNrLiBBbGVydGluZyBzeXN0ZW0gJmFtcDsgY3VzdG9tIGRhc2hib2FyZHMuPC9wPjwvZGl2PgogICAgPC9kaXY+CiAgPC9kaXY+Cjwvc2VjdGlvbj4KCjxzZWN0aW9uIGNsYXNzPSJzZWN0aW9uIiBpZD0ic3RhY2siIHN0eWxlPSJiYWNrZ3JvdW5kOnZhcigtLWJnLWNhcmQpO2JvcmRlci10b3A6MXB4IHNvbGlkIHZhcigtLWJvcmRlcik7Ym9yZGVyLWJvdHRvbToxcHggc29saWQgdmFyKC0tYm9yZGVyKSI+CiAgPGRpdiBjbGFzcz0iY29udGFpbmVyIj4KICAgIDxzcGFuIGNsYXNzPSJzZWN0aW9uLWxhYmVsIj5TdGFjazwvc3Bhbj4KICAgIDxoMiBjbGFzcz0ic2VjdGlvbi10aXRsZSI+VG9vbHMgJmFtcDsgVGVjaG5vbG9neTwvaDI+CiAgICA8ZGl2IGNsYXNzPSJzdGFjay13cmFwIj4KICAgICAgPHNwYW4+TGludXg8L3NwYW4+PHNwYW4+RG9ja2VyPC9zcGFuPjxzcGFuPkt1YmVybmV0ZXM8L3NwYW4+PHNwYW4+QVdTPC9zcGFuPjxzcGFuPkdDUDwvc3Bhbj4KICAgICAgPHNwYW4+VGVycmFmb3JtPC9zcGFuPjxzcGFuPkFuc2libGU8L3NwYW4+PHNwYW4+Tmdpbng8L3NwYW4+PHNwYW4+UG9zdGdyZVNRTDwvc3Bhbj4KICAgICAgPHNwYW4+TXlTUUw8L3NwYW4+PHNwYW4+UmVkaXM8L3NwYW4+PHNwYW4+V2F6dWg8L3NwYW4+PHNwYW4+R3JhZmFuYTwvc3Bhbj4KICAgICAgPHNwYW4+UHJvbWV0aGV1czwvc3Bhbj48c3Bhbj5FTEs8L3NwYW4+PHNwYW4+R2l0PC9zcGFuPjxzcGFuPkNJL0NEPC9zcGFuPgogICAgICA8c3Bhbj5DbG91ZGZsYXJlPC9zcGFuPjxzcGFuPldpcmVHdWFyZDwvc3Bhbj48c3Bhbj5CYXNoPC9zcGFuPjxzcGFuPlB5dGhvbjwvc3Bhbj4KICAgIDwvZGl2PgogIDwvZGl2Pgo8L3NlY3Rpb24+Cgo8c2VjdGlvbiBjbGFzcz0iY3RhIiBpZD0iY29udGFjdCI+CiAgPGRpdiBjbGFzcz0iY29udGFpbmVyIj4KICAgIDxzcGFuIGNsYXNzPSJzZWN0aW9uLWxhYmVsIj5Db250YWN0PC9zcGFuPgogICAgPGgyPk5lZWQgU2VydmVyIE1hbmFnZW1lbnQ/PC9oMj4KICAgIDxwPlNldHVwLCBtaWdyYXRpb24sIG1haW50ZW5hbmNlICZtZGFzaDsgZnJlZSBjb25zdWx0YXRpb24uIE5vIGNvbW1pdG1lbnQuPC9wPgogICAgPGEgaHJlZj0iaHR0cHM6Ly93YS5tZS82Mjg5Nzc3MDU0NTk5IiBjbGFzcz0iY3RhLWJ0biI+Q2hhdCB2aWEgV2hhdHNBcHA8L2E+CiAgICA8ZGl2IGNsYXNzPSJjb250YWN0LWluZm8iPgogICAgICA8ZGl2PjxzcGFuIGNsYXNzPSJsYmwiPldoYXRzQXBwPC9zcGFuPjxzcGFuIGNsYXNzPSJ2YWwiPjA4OTc3NzA1NDU5OTwvc3Bhbj48L2Rpdj4KICAgICAgPGRpdj48c3BhbiBjbGFzcz0ibGJsIj5FbWFpbDwvc3Bhbj48c3BhbiBjbGFzcz0idmFsIj5kYW5hbmdrdXJuaWF3YW5AcHJvdG9uLm1lPC9zcGFuPjwvZGl2PgogICAgICA8ZGl2PjxzcGFuIGNsYXNzPSJsYmwiPkxvY2F0aW9uPC9zcGFuPjxzcGFuIGNsYXNzPSJ2YWwiPkNpbGFjYXAsIEluZG9uZXNpYTwvc3Bhbj48L2Rpdj4KICAgIDwvZGl2PgogIDwvZGl2Pgo8L3NlY3Rpb24+Cgo8Zm9vdGVyPjxkaXYgY2xhc3M9ImNvbnRhaW5lciI+PHA+JmNvcHk7IDIwMjYgRGFuYW5nICZtZGFzaDsgU2VydmVyICYgQ2xvdWQgRW5naW5lZXI8L3A+PC9kaXY+PC9mb290ZXI+CgoKCgo="),d=document,div=d.createElement("div");
-div.innerHTML=b;
-var ldr=d.getElementById("ldr");
-while(div.firstChild)d.body.insertBefore(div.firstChild,ldr);
-ldr.remove();
 function toggleTheme(){
-  var h=d.documentElement;
-  if(h.classList.contains("light")){
-    h.classList.remove("light");h.classList.add("dark");
-    d.querySelector(".theme-btn").innerHTML="\u263e";
+  var h=document.documentElement;
+  if(h.classList.contains('light')){
+    h.classList.remove('light');h.classList.add('dark');
+    document.querySelector('.theme-btn').innerHTML='☾';
   }else{
-    h.classList.remove("dark");h.classList.add("light");
-    d.querySelector(".theme-btn").innerHTML="\u2600\ufe0f";
+    h.classList.remove('dark');h.classList.add('light');
+    document.querySelector('.theme-btn').innerHTML='☀️';
   }
 }
-function openMenu(){var m=d.getElementById("mobileDrawer");if(m)m.classList.add("active")}
-function closeMenu(){var m=d.getElementById("mobileDrawer");if(m)m.classList.remove("active")}
+function openMenu(){document.getElementById('mobileDrawer').classList.add('active')}
+function closeMenu(){document.getElementById('mobileDrawer').classList.remove('active')}
 </script>
 </body>
 </html>
