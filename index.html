@@ -233,30 +233,32 @@ function openMenu(){document.getElementById('mobileDrawer').classList.add('activ
 function closeMenu(){document.getElementById('mobileDrawer').classList.remove('active')}
 
 // Load blog posts
-fetch('blog/articles.json')
+var blogJson = location.hostname === 'localhost' ? 'blog/articles.json' : '/blog/articles.json';
+fetch(blogJson)
   .then(r=>r.json())
   .then(posts=>{
     var g=document.getElementById('blogGrid');
-    g.innerHTML=posts.slice(0,6).map(p=>
-      '<div class=\"post\" onclick=\"this.classList.toggle(\'expanded\')\" style=\"cursor:pointer\">'+
+    g.innerHTML=posts.slice(0,6).map(function(p){
+      return '<div class=\"post\" data-id=\"'+p.id+'\" style=\"cursor:pointer\">'+
       '<span class=\"post-cat\">'+p.category+'</span>'+
       '<h3>'+p.title+'</h3>'+
       '<p>'+p.summary+'</p>'+
       '<div class=\"post-full\" style=\"display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted);line-height:1.8;white-space:pre-wrap\">'+p.content+'</div>'+
-      '<span class=\"post-date\">'+p.date+' &mdash; Click to read</span></div>'
-    ).join('');
+      '<span class=\"post-date\">'+p.date+' &mdash; Click to read</span></div>';
+    }).join('');
+    
+    // Add click handlers
+    var posts = g.querySelectorAll('.post');
+    for(var i=0;i<posts.length;i++){
+      posts[i].addEventListener('click',function(){
+        var full=this.querySelector('.post-full');
+        var isOpen=full.style.display==='block';
+        full.style.display=isOpen?'none':'block';
+        this.classList.toggle('expanded');
+      });
+    }
   })
-  .catch(()=>{document.getElementById('blogGrid').innerHTML='<p style=\"color:var(--muted)\">Articles coming soon.</p>'});
-
-// Expand/collapse blog posts
-document.addEventListener('click',function(e){
-  var post=e.target.closest('.post');
-  if(!post) return;
-  var full=post.querySelector('.post-full');
-  if(!full) return;
-  post.classList.toggle('expanded');
-  full.style.display=post.classList.contains('expanded')?'block':'none';
-});
+  .catch(function(e){document.getElementById('blogGrid').innerHTML='<p style=\"color:var(--muted)\">Articles coming soon.</p>';console.log(e)});
 </script>
 </body>
 </html>
