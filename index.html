@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Danang — Server & Cloud Engineer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:#f8f9fb; --bg-card:#fff; --text:#1a1a2e; --muted:#6b7280; --border:#e5e7eb;
+  --red:#e53e3e; --red-light:#fff5f5; --red-dark:#c53030;
+  --blue:#3182ce; --blue-light:#ebf8ff;
+  --green:#38a169; --green-light:#f0fff4;
+}
+.dark {
+  --bg:#111827; --bg-card:#1f2937; --text:#f3f4f6; --muted:#9ca3af; --border:#374151;
+  --red-light:#3b1515; --blue-light:#15223b; --green-light:#153b21;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Quicksand',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background 0.3s,color 0.3s;font-weight:500}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(248,249,251,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;justify-content:space-between;align-items:center}
+.dark nav{background:rgba(17,24,39,0.85)}
+nav .logo{font-size:20px;font-weight:700;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px}
+nav .logo .dot{width:8px;height:8px;background:var(--red);border-radius:50%}
+nav .nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+nav .nav-links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;padding:8px 14px;border-radius:20px;transition:all 0.2s}
+nav .nav-links a:hover{color:var(--red);background:var(--red-light)}
+nav .right{display:flex;align-items:center;gap:8px}
+nav .theme-btn{background:var(--bg-card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+nav .theme-btn:hover{border-color:var(--red)}
+nav .menu-btn{display:none;background:var(--red);border:none;color:#fff;padding:10px 18px;border-radius:20px;cursor:pointer;font-family:'Quicksand',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+nav .nav-cta{background:var(--red);color:#fff!important;padding:10px 20px!important;border-radius:20px!important;font-weight:700!important}
+nav .nav-cta:hover{background:var(--red-dark)!important;color:#fff!important}
+
+.mobile-drawer{position:fixed;inset:0;background:var(--bg);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transform:translateY(-100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1)}
+.mobile-drawer.active{transform:translateY(0)}
+.mobile-drawer a{text-decoration:none;color:var(--text);font-size:20px;font-weight:700}
+.mobile-drawer .close-btn{position:absolute;top:16px;right:24px;background:var(--bg-card);border:1px solid var(--border);color:var(--text);padding:10px 18px;border-radius:20px;cursor:pointer;font-weight:700;font-size:12px}
+
+.container{max-width:1024px;margin:0 auto;padding:0 24px}
+
+.hero{padding:72px 0 48px;text-align:center}
+.hero .badge{display:inline-block;background:var(--red-light);color:var(--red);font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:1px;text-transform:uppercase}
+.hero h1{font-size:clamp(28px,5vw,44px);font-weight:700;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:var(--red);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.hero p{font-size:16px;color:var(--muted);max-width:540px;margin:0 auto 28px;line-height:1.8}
+.hero .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero .hero-btns a{padding:12px 28px;border-radius:24px;font-weight:700;font-size:14px;text-decoration:none;transition:all 0.2s}
+.hero .hero-btns a.primary{background:var(--red);color:#fff}
+.hero .hero-btns a.primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 6px 24px rgba(229,62,62,0.25)}
+.hero .hero-btns a.outline{background:var(--bg-card);color:var(--text);border:1.5px solid var(--border)}
+.hero .hero-btns a.outline:hover{border-color:var(--red);color:var(--red)}
+
+.hero-stats{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+.hero-stats .hs{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:18px 28px;text-align:center;transition:all 0.2s}
+.hero-stats .hs:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.05)}
+.hero-stats .hs .v{font-size:24px;font-weight:700;display:block}
+.hero-stats .hs:nth-child(1) .v{color:var(--red)}
+.hero-stats .hs:nth-child(2) .v{color:var(--blue)}
+.hero-stats .hs:nth-child(3) .v{color:var(--green)}
+.hero-stats .hs .l{font-size:11px;color:var(--muted);font-weight:600;margin-top:2px;display:block}
+
+.section{padding:64px 0}
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--red);margin-bottom:8px;display:block}
+.section-title{font-size:clamp(22px,3vw,28px);font-weight:700;margin-bottom:32px}
+
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.services-grid .card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all 0.25s}
+.services-grid .card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.06);border-color:var(--red)}
+.services-grid .card .card-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.card-icon.red{background:var(--red-light);color:var(--red)}
+.card-icon.blue{background:var(--blue-light);color:var(--blue)}
+.card-icon.green{background:var(--green-light);color:var(--green)}
+.services-grid .card h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.services-grid .card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+.stack-wrap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.stack-wrap span{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:8px 18px;font-size:12px;font-weight:600;color:var(--muted);transition:all 0.2s}
+.stack-wrap span:hover{border-color:var(--red);color:var(--red);transform:translateY(-1px)}
+
+.cta{background:var(--red);color:#fff;text-align:center;padding:64px 0;border-radius:0;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,255,255,0.06);border-radius:50%}
+.cta .section-label{color:rgba(255,255,255,0.7)}
+.cta h2{font-size:clamp(24px,3vw,30px);font-weight:700;margin-bottom:8px}
+.cta p{font-size:15px;margin-bottom:24px;opacity:0.85}
+.cta a.cta-btn{display:inline-block;background:#fff;color:var(--red);font-weight:700;font-size:14px;padding:14px 34px;border-radius:24px;text-decoration:none;transition:all 0.2s}
+.cta a.cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.15)}
+.cta .contact-info{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.cta .contact-info div{background:rgba(255,255,255,0.1);border-radius:12px;padding:16px 24px;text-align:center;min-width:160px}
+.cta .contact-info .lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;opacity:0.6;display:block;margin-bottom:4px}
+.cta .contact-info .val{font-size:14px;font-weight:600}
+
+footer{padding:32px 0;text-align:center}
+footer p{font-size:11px;color:var(--muted);font-weight:600}
+
+@media(max-width:768px){
+  nav .nav-links,nav .nav-cta{display:none}
+  nav .menu-btn{display:block}
+  .hero{padding:48px 0 36px}
+  .hero-stats{gap:6px}.hero-stats .hs{padding:14px 18px}.hero-stats .hs .v{font-size:20px}
+  .services-grid{grid-template-columns:1fr}
+  .section{padding:48px 0}
+}
+</style>
+</head>
+<body class="light">
+
+<nav>
+  <a href="#" class="logo"><span class="dot"></span> danang</a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="right">
+    <button class="theme-btn" onclick="toggleTheme()" title="Mode">☀</button>
+    <button class="menu-btn" onclick="openMenu()">MENU</button>
+  </div>
+</nav>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <button class="close-btn" onclick="closeMenu()">TUTUP</button>
+  <a href="#" onclick="closeMenu()">Home</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#stack" onclick="closeMenu()">Stack</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">Available for Work</span>
+    <h1>Infrastructure <span>that works.</span></h1>
+    <p>Server on-premise atau cloud — dikelola profesional. Deploy, monitor, secure, scale. Fokus ke bisnis Anda, saya urus teknisnya.</p>
+    <div class="hero-btns">
+      <a href="#services" class="primary">Lihat Layanan</a>
+      <a href="https://wa.me/6289777054599" class="outline">Hubungi Saya</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><span class="v">6+</span><span class="l">Tahun Pengalaman</span></div>
+      <div class="hs"><span class="v">50+</span><span class="l">Server Dikelola</span></div>
+      <div class="hs"><span class="v">99.9%</span><span class="l">Uptime</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="container">
+    <span class="section-label">Layanan</span>
+    <h2 class="section-title">Yang Saya Kerjakan</h2>
+    <div class="services-grid">
+      <div class="card"><div class="card-icon red">🖥️</div><h3>Server Management</h3><p>Setup, hardening, maintenance Linux/Windows. Monitoring 24/7. Patch management & disaster recovery.</p></div>
+      <div class="card"><div class="card-icon blue">☁️</div><h3>Cloud Infrastructure</h3><p>AWS, GCP, Azure — migrasi, optimasi, auto-scaling. Infrastructure as Code & cost optimization.</p></div>
+      <div class="card"><div class="card-icon green">🔒</div><h3>Network & Security</h3><p>Firewall, VPN, IDS/IPS, WAF. Hardening server, audit keamanan, SSL/TLS management.</p></div>
+      <div class="card"><div class="card-icon red">🐳</div><h3>Docker & Kubernetes</h3><p>Containerization & orchestration. Docker Compose sampai production K8s cluster. CI/CD pipeline.</p></div>
+      <div class="card"><div class="card-icon blue">🗄️</div><h3>Database Admin</h3><p>PostgreSQL, MySQL, MongoDB — setup, replication, backup, tuning. High availability.</p></div>
+      <div class="card"><div class="card-icon green">📊</div><h3>Monitoring & Logging</h3><p>Wazuh, Grafana, Prometheus, ELK Stack. Alerting system & dashboard custom.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stack" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <span class="section-label">Stack</span>
+    <h2 class="section-title">Tools & Teknologi</h2>
+    <div class="stack-wrap">
+      <span>Linux</span><span>Docker</span><span>Kubernetes</span><span>AWS</span><span>GCP</span>
+      <span>Terraform</span><span>Ansible</span><span>Nginx</span><span>PostgreSQL</span>
+      <span>MySQL</span><span>Redis</span><span>Wazuh</span><span>Grafana</span>
+      <span>Prometheus</span><span>ELK</span><span>Git</span><span>CI/CD</span>
+      <span>Cloudflare</span><span>WireGuard</span><span>Bash</span><span>Python</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <span class="section-label">Kontak</span>
+    <h2>Butuh Server Dikelola?</h2>
+    <p>Setup, migrasi, maintenance — gratis konsultasi. Tanpa komitmen.</p>
+    <a href="https://wa.me/6289777054599" class="cta-btn">Chat via WhatsApp</a>
+    <div class="contact-info">
+      <div><span class="lbl">WhatsApp</span><span class="val">089777054599</span></div>
+      <div><span class="lbl">Email</span><span class="val">danangkurniawan@proton.me</span></div>
+      <div><span class="lbl">Lokasi</span><span class="val">Cilacap, Indonesia</span></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container"><p>&copy; 2026 Danang — Server & Cloud Engineer</p></div></footer>
+
+<script>
+function toggleTheme(){
+  document.documentElement.classList.toggle('dark');
+  document.documentElement.classList.toggle('light');
+  document.querySelector('.theme-btn').textContent = document.documentElement.classList.contains('dark') ? '☾' : '☀';
+}
+function openMenu(){document.getElementById('mobileDrawer').classList.add('active')}
+function closeMenu(){document.getElementById('mobileDrawer').classList.remove('active')}
+</script>
+</body>
+</html>
