@@ -233,15 +233,30 @@ function openMenu(){document.getElementById('mobileDrawer').classList.add('activ
 function closeMenu(){document.getElementById('mobileDrawer').classList.remove('active')}
 
 // Load blog posts
-fetch('https://raw.githubusercontent.com/danangkurniaw/danangkurniaw.github.io/main/blog/articles.json')
+fetch('blog/articles.json')
   .then(r=>r.json())
   .then(posts=>{
     var g=document.getElementById('blogGrid');
     g.innerHTML=posts.slice(0,6).map(p=>
-      '<div class="post"><span class="post-cat">'+p.category+'</span><h3>'+p.title+'</h3><p>'+p.summary+'</p><span class="post-date">'+p.date+'</span></div>'
+      '<div class=\"post\" onclick=\"this.classList.toggle(\'expanded\')\" style=\"cursor:pointer\">'+
+      '<span class=\"post-cat\">'+p.category+'</span>'+
+      '<h3>'+p.title+'</h3>'+
+      '<p>'+p.summary+'</p>'+
+      '<div class=\"post-full\" style=\"display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted);line-height:1.8;white-space:pre-wrap\">'+p.content+'</div>'+
+      '<span class=\"post-date\">'+p.date+' &mdash; Click to read</span></div>'
     ).join('');
   })
   .catch(()=>{document.getElementById('blogGrid').innerHTML='<p style=\"color:var(--muted)\">Articles coming soon.</p>'});
+
+// Expand/collapse blog posts
+document.addEventListener('click',function(e){
+  var post=e.target.closest('.post');
+  if(!post) return;
+  var full=post.querySelector('.post-full');
+  if(!full) return;
+  post.classList.toggle('expanded');
+  full.style.display=post.classList.contains('expanded')?'block':'none';
+});
 </script>
 </body>
 </html>

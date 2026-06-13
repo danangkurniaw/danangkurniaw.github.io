@@ -4,34 +4,39 @@
     "date": "2026-06-14",
     "title": "10 Essential Linux Commands Every SysAdmin Should Know",
     "category": "Linux",
-    "summary": "From grep to systemctl \u2014 master these commands and you will handle 90% of daily server tasks without breaking a sweat."
+    "summary": "From grep to systemctl \u2014 master these commands and you will handle 90% of daily server tasks without breaking a sweat.",
+    "content": "Whether you are managing one server or a thousand, the command line is your best friend. Here are 10 commands that every system administrator should have at their fingertips.\n\n**1. grep** \u2014 Search text like a pro. `grep -r 'error' /var/log` finds errors across all logs instantly.\n\n**2. systemctl** \u2014 Control services. `systemctl status nginx`, `systemctl restart docker`, `systemctl enable \u2014now ssh`.\n\n**3. journalctl** \u2014 Read systemd logs. `journalctl -u nginx -f` tails nginx logs in real time.\n\n**4. ss** \u2014 Socket statistics. `ss -tlnp` shows all listening TCP ports with process names.\n\n**5. find** \u2014 Locate files. `find / -name '*.log' -mtime -7` finds logs modified in the last week.\n\n**6. df / du** \u2014 Disk usage. `df -h` for filesystem overview, `du -sh /var/log` for specific directories.\n\n**7. top / htop** \u2014 Process monitoring. htop provides a colorful, interactive view.\n\n**8. iptables / ufw** \u2014 Firewall management. `ufw allow 443/tcp` opens HTTPS port.\n\n**9. rsync** \u2014 File synchronization. `rsync -avz /source user@host:/dest` syncs files remotely.\n\n**10. curl** \u2014 HTTP client. Test APIs, download files, debug endpoints.\n\nMaster these ten, and you are ready for most system administration challenges."
   },
   {
     "id": 2,
     "date": "2026-06-13",
     "title": "Docker Compose vs Kubernetes: When to Use What",
     "category": "DevOps",
-    "summary": "Not every project needs Kubernetes. Sometimes Docker Compose is the smarter choice. Here is how to decide."
+    "summary": "Not every project needs Kubernetes. Sometimes Docker Compose is the smarter choice. Here is how to decide.",
+    "content": "The container orchestration landscape can be confusing. Docker Compose and Kubernetes both manage containers, but they serve different purposes.\n\n**Docker Compose** is perfect for:\n- Development environments\n- Single-server deployments\n- Small to medium projects (1-5 services)\n- Quick prototyping and testing\n\n**Kubernetes** is better for:\n- Multi-server production clusters\n- Auto-scaling workloads\n- Zero-downtime deployments\n- Complex microservices architectures\n\n**The Rule of Thumb:**\nIf you can run your entire stack on one server, use Docker Compose. If you need horizontal scaling, self-healing, and rolling updates across multiple nodes \u2014 Kubernetes is the answer.\n\n**The Middle Ground:**\nDocker Swarm exists but has lost the orchestration war. If you are transitioning from Compose to K8s, consider lightweight K8s distributions like K3s or MicroK8s.\n\nStart with Compose. Migrate to K8s when you actually need it, not before."
   },
   {
     "id": 3,
     "date": "2026-06-12",
     "title": "Hardening Ubuntu Server in 15 Minutes",
     "category": "Security",
-    "summary": "A practical checklist: SSH key auth, firewall, fail2ban, automatic updates, and disabling root login."
+    "summary": "A practical checklist: SSH key auth, firewall, fail2ban, automatic updates, and disabling root login.",
+    "content": "A freshly installed Ubuntu server is not secure by default. Here is a 15-minute hardening checklist.\n\n**1. Update Everything:**\n```bash\napt update && apt upgrade -y\n```\n\n**2. Create a Non-Root User:**\n```bash\nadduser deploy\nusermod -aG sudo deploy\n```\n\n**3. SSH Key Authentication Only:**\nCopy your public key to `~/.ssh/authorized_keys`, then edit `/etc/ssh/sshd_config`:\n```\nPasswordAuthentication no\nPermitRootLogin no\n```\n`systemctl restart sshd`\n\n**4. Enable UFW Firewall:**\n```bash\nufw allow 22/tcp\nufw allow 80/tcp\nufw allow 443/tcp\nufw enable\n```\n\n**5. Install fail2ban:**\n```bash\napt install fail2ban -y\nsystemctl enable \u2014now fail2ban\n```\n\n**6. Enable Automatic Security Updates:**\n```bash\napt install unattended-upgrades -y\ndpkg-reconfigure unattended-upgrades\n```\n\nDone. Your server is now significantly harder to compromise."
   },
   {
     "id": 4,
     "date": "2026-06-11",
     "title": "AWS Cost Optimization: 5 Quick Wins",
     "category": "Cloud",
-    "summary": "Stop overpaying for cloud. Rightsizing, reserved instances, S3 lifecycle policies \u2014 small changes, big savings."
+    "summary": "Stop overpaying for cloud. Rightsizing, reserved instances, S3 lifecycle policies \u2014 small changes, big savings.",
+    "content": "Cloud bills can spiral out of control fast. Here are five quick wins that can save you hundreds per month.\n\n**1. Rightsize Your EC2 Instances:**\nCheck CloudWatch metrics. If CPU averages below 10%, you are paying for unused capacity. Downgrade from t3.large to t3.medium or switch to burstable instances.\n\n**2. Buy Reserved Instances:**\nIf you know a workload will run for 1-3 years, reserved instances save 30-60% compared to on-demand pricing.\n\n**3. S3 Lifecycle Policies:**\nMove old files to cheaper storage tiers automatically:\n- 30 days \u2192 S3 Infrequent Access (40% cheaper)\n- 90 days \u2192 S3 Glacier (80% cheaper)\n\n**4. Delete Unused EBS Volumes:**\nEvery EC2 termination leaves behind EBS volumes. Run a monthly audit and delete orphaned volumes.\n\n**5. Set Budget Alerts:**\nAWS Budgets can email you when costs exceed thresholds. Set alerts at 50%, 80%, and 100% of your monthly budget.\n\nSmall changes, big impact. Start today."
   },
   {
     "id": 5,
     "date": "2026-06-10",
     "title": "Monitoring Stack: Grafana + Prometheus + Node Exporter",
     "category": "DevOps",
-    "summary": "Set up a complete monitoring dashboard for your servers in under 30 minutes. Beautiful graphs included."
+    "summary": "Set up a complete monitoring dashboard for your servers in under 30 minutes. Beautiful graphs included.",
+    "content": "Every server needs monitoring. Here is how to set up the industry-standard stack.\n\n**Architecture:**\nNode Exporter collects metrics from each server \u2192 Prometheus scrapes and stores them \u2192 Grafana visualizes everything in dashboards.\n\n**Step 1: Install Node Exporter on each server:**\n```bash\nwget https://github.com/prometheus/node_exporter/releases/latest/download/node_exporter-linux-amd64.tar.gz\ntar xzf node_exporter*.tar.gz\n./node_exporter &\n```\n\n**Step 2: Install Prometheus:**\n```bash\napt install prometheus -y\n```\nEdit `/etc/prometheus/prometheus.yml` to add your server targets.\n\n**Step 3: Install Grafana:**\n```bash\napt install grafana -y\nsystemctl enable \u2014now grafana-server\n```\n\n**Step 4: Import Dashboard:**\nGrafana has a community dashboard (ID: 1860) for Node Exporter. One click import and you get CPU, memory, disk, and network metrics in beautiful graphs.\n\nThat's it. 30 minutes, and you have enterprise-grade monitoring."
   }
 ]
