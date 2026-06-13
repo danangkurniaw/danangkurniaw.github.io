@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "date": "2026-06-14",
+    "title": "10 Essential Linux Commands Every SysAdmin Should Know",
+    "category": "Linux",
+    "summary": "From grep to systemctl \u2014 master these commands and you will handle 90% of daily server tasks without breaking a sweat."
+  },
+  {
+    "id": 2,
+    "date": "2026-06-13",
+    "title": "Docker Compose vs Kubernetes: When to Use What",
+    "category": "DevOps",
+    "summary": "Not every project needs Kubernetes. Sometimes Docker Compose is the smarter choice. Here is how to decide."
+  },
+  {
+    "id": 3,
+    "date": "2026-06-12",
+    "title": "Hardening Ubuntu Server in 15 Minutes",
+    "category": "Security",
+    "summary": "A practical checklist: SSH key auth, firewall, fail2ban, automatic updates, and disabling root login."
+  },
+  {
+    "id": 4,
+    "date": "2026-06-11",
+    "title": "AWS Cost Optimization: 5 Quick Wins",
+    "category": "Cloud",
+    "summary": "Stop overpaying for cloud. Rightsizing, reserved instances, S3 lifecycle policies \u2014 small changes, big savings."
+  },
+  {
+    "id": 5,
+    "date": "2026-06-10",
+    "title": "Monitoring Stack: Grafana + Prometheus + Node Exporter",
+    "category": "DevOps",
+    "summary": "Set up a complete monitoring dashboard for your servers in under 30 minutes. Beautiful graphs included."
+  }
+]

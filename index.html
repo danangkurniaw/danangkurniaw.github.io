@@ -98,6 +98,15 @@ nav .nav-cta:hover{background:var(--red-dark)!important;color:#fff!important}
 footer{padding:32px 0;text-align:center}
 footer p{font-size:11px;color:var(--muted);font-weight:600}
 
+/* === BLOG === */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.blog-grid .post{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all 0.25s}
+.blog-grid .post:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.06);border-color:var(--red)}
+.blog-grid .post .post-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--red);margin-bottom:8px;display:block}
+.blog-grid .post h3{font-size:16px;font-weight:700;margin-bottom:8px;line-height:1.4}
+.blog-grid .post p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px}
+.blog-grid .post .post-date{font-size:11px;color:var(--muted);opacity:0.6}
+
 @media(max-width:768px){
   nav .nav-links,nav .nav-cta{display:none}
   nav .menu-btn{display:block}
@@ -119,6 +128,7 @@ footer p{font-size:11px;color:var(--muted);font-weight:600}
     <li><a href="#">Home</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#stack">Stack</a></li>
+    <li><a href="#blog">Blog</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
   <div class="right">
@@ -132,6 +142,7 @@ footer p{font-size:11px;color:var(--muted);font-weight:600}
   <a href="#" onclick="closeMenu()">Home</a>
   <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#stack" onclick="closeMenu()">Stack</a>
+  <a href="#blog" onclick="closeMenu()">Blog</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
 </div>
 
@@ -181,6 +192,16 @@ footer p{font-size:11px;color:var(--muted);font-weight:600}
   </div>
 </section>
 
+<section class="section" id="blog">
+  <div class="container">
+    <span class="section-label">Blog</span>
+    <h2 class="section-title">Latest Articles</h2>
+    <div class="blog-grid" id="blogGrid">
+      <p style="color:var(--muted)">Loading articles...</p>
+    </div>
+  </div>
+</section>
+
 <section class="cta" id="contact">
   <div class="container">
     <span class="section-label">Contact</span>
@@ -210,6 +231,17 @@ function toggleTheme(){
 }
 function openMenu(){document.getElementById('mobileDrawer').classList.add('active')}
 function closeMenu(){document.getElementById('mobileDrawer').classList.remove('active')}
+
+// Load blog posts
+fetch('https://raw.githubusercontent.com/danangkurniaw/danangkurniaw.github.io/main/blog/articles.json')
+  .then(r=>r.json())
+  .then(posts=>{
+    var g=document.getElementById('blogGrid');
+    g.innerHTML=posts.slice(0,6).map(p=>
+      '<div class="post"><span class="post-cat">'+p.category+'</span><h3>'+p.title+'</h3><p>'+p.summary+'</p><span class="post-date">'+p.date+'</span></div>'
+    ).join('');
+  })
+  .catch(()=>{document.getElementById('blogGrid').innerHTML='<p style=\"color:var(--muted)\">Articles coming soon.</p>'});
 </script>
 </body>
 </html>
