@@ -144,6 +144,7 @@ footer p{font-size:11px;color:var(--muted);font-weight:600}
     <li><a href="#services">Services</a></li>
     <li><a href="#stack">Stack</a></li>
     <li><a href="#blog">Blog</a></li>
+    <li><a href="#uptime">Uptime</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
   <div class="right">
@@ -158,6 +159,7 @@ footer p{font-size:11px;color:var(--muted);font-weight:600}
   <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#stack" onclick="closeMenu()">Stack</a>
   <a href="#blog" onclick="closeMenu()">Blog</a>
+  <a href="#uptime" onclick="closeMenu()">Uptime</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
 </div>
 
@@ -203,6 +205,39 @@ footer p{font-size:11px;color:var(--muted);font-weight:600}
       <span>MySQL</span><span>Redis</span><span>Wazuh</span><span>Grafana</span>
       <span>Prometheus</span><span>ELK</span><span>Git</span><span>CI/CD</span>
       <span>Cloudflare</span><span>WireGuard</span><span>Bash</span><span>Python</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="uptime">
+  <div class="container">
+    <span class="section-label">Uptime</span>
+    <h2 class="section-title">Monitor Status</h2>
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:500px">
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <strong style="font-size:15px">018.my.id</strong>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px" id="uptimeUrl">https://018.my.id</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span id="uptimeStatus" style="width:12px;height:12px;border-radius:50%;background:#999;display:inline-block"></span>
+          <span id="uptimeText" style="font-size:13px;font-weight:700;color:var(--muted)">Checking...</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:14px 20px;text-align:center;min-width:100px">
+          <div id="uptimePct" style="font-size:22px;font-weight:800;color:var(--green)">—</div>
+          <div style="font-size:10px;color:var(--muted);font-weight:600;letter-spacing:1px">UPTIME</div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:14px 20px;text-align:center;min-width:100px">
+          <div id="uptimeLast" style="font-size:13px;font-weight:600;color:var(--muted)">—</div>
+          <div style="font-size:10px;color:var(--muted);font-weight:600;letter-spacing:1px">LAST CHECK</div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:14px 20px;text-align:center;min-width:100px">
+          <div id="uptimeMs" style="font-size:13px;font-weight:600;color:var(--muted)">—</div>
+          <div style="font-size:10px;color:var(--muted);font-weight:600;letter-spacing:1px">RESPONSE</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -257,6 +292,36 @@ function toggleTheme(){
 }
 function openMenu(){document.getElementById('mobileDrawer').classList.add('active')}
 function closeMenu(){document.getElementById('mobileDrawer').classList.remove('active')}
+
+// Uptime Monitor
+(function(){
+  var okCount=0,totalCount=0,startTime=Date.now();
+  var check=function(){
+    totalCount++;
+    var t0=Date.now();
+    fetch('https://018.my.id/',{mode:'no-cors'})
+      .then(function(){
+        okCount++;
+        var ms=Date.now()-t0;
+        var pct=Math.round((okCount/totalCount)*100);
+        document.getElementById('uptimeStatus').style.background='#38a169';
+        document.getElementById('uptimeText').textContent='Online';
+        document.getElementById('uptimeText').style.color='#38a169';
+        document.getElementById('uptimePct').textContent=pct+'%';
+        document.getElementById('uptimePct').style.color='#38a169';
+        document.getElementById('uptimeMs').textContent=ms+'ms';
+        document.getElementById('uptimeLast').textContent=new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+      })
+      .catch(function(){
+        document.getElementById('uptimeStatus').style.background='#e53e3e';
+        document.getElementById('uptimeText').textContent='Offline';
+        document.getElementById('uptimeText').style.color='#e53e3e';
+        document.getElementById('uptimeLast').textContent=new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+      });
+  };
+  check();
+  setInterval(check,30000);
+})();
 
 // Load blog posts
 var allPosts=[],perPage=5,currentPage=1;
