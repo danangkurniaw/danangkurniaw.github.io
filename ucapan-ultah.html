@@ -234,11 +234,11 @@ body{
     </p>
 
     <div class="jokes">
-      <div class="joke"><span class="j-emoji">&#x1F4AA;</span>Umur cuma angka — angka yg bikin dompet makin tipis pas traktir</div>
-      <div class="joke"><span class="j-emoji">&#x1F3C3;</span>Makin tua? Nggak. Cuma makin <i>vintage</i> edition</div>
-      <div class="joke"><span class="j-emoji">&#x1F369;</span>Kalori kue ulang tahun = 0. Percayalah.</div>
-      <div class="joke"><span class="j-emoji">&#x1F4B0;</span>Semoga rejeki lancar, biar traktirannya makin banyak</div>
-      <div class="joke"><span class="j-emoji">&#x1F973;</span>Kamu bukan tua. Kamu klasik. Limited edition.</div>
+      <div class="joke"><span class="j-emoji">&#x1F495;</span>Kamu adalah alasan kenapa aku tersenyum setiap hari</div>
+      <div class="joke"><span class="j-emoji">&#x1F31F;</span>Kehadiranmu membuat dunia jadi lebih indah</div>
+      <div class="joke"><span class="j-emoji">&#x2764;</span>Setiap detik bersamamu adalah hadiah terindah</div>
+      <div class="joke"><span class="j-emoji">&#x1F338;</span>Kamu bukan cuma bertambah usia, tapi bertambah cantik/tampan</div>
+      <div class="joke"><span class="j-emoji">&#x1F48E;</span>Beruntungnya dunia punya kamu di dalamnya</div>
     </div>
 
     <div class="btn-wrap">
@@ -247,16 +247,58 @@ body{
         &#x1F381; BUKA HADIAH
       </button>
     </div>
+  </div>
+</div>
 
-    <div class="hidden surprise-msg" id="surprise">
-      <p style="font-size:16px;margin-bottom:6px">&#x1F48C; Pesan Khusus:</p>
-      <p>Kamu luar biasa.<br>
+<!-- Modal -->
+<div class="modal-overlay" id="giftModal">
+  <div class="modal-card">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <span style="font-size:56px;display:block;margin-bottom:8px">&#x1F48C;</span>
+    <h2 style="font-family:'Fredoka One',cursive;font-size:22px;color:#f5576c;margin-bottom:16px">Pesan Khusus</h2>
+    <p style="color:rgba(255,255,255,0.7);font-size:14px;line-height:2">
+      Kamu luar biasa.<br>
       Jangan pernah berhenti jadi diri sendiri.<br>
       Dunia butuh orang seperti kamu.<br><br>
-      <span style="opacity:0.6;font-size:12px">— dikirim oleh Danang via AI &#x1F916;</span></p>
+      Selamat ulang tahun.<br>
+      Semoga semua impianmu tercapai.<br>
+      Aku selalu di sini untukmu.<br><br>
+      <span style="opacity:0.5;font-size:11px">— dikirim oleh Danang via AI &#x1F916;</span>
+    </p>
+    <div style="margin-top:20px;font-size:32px;display:flex;gap:12px;justify-content:center">
+      <span style="animation:bounce 1s ease infinite">&#x1F495;</span>
+      <span style="animation:bounce 1s ease 0.2s infinite">&#x1F49B;</span>
+      <span style="animation:bounce 1s ease 0.4s infinite">&#x1F49C;</span>
     </div>
   </div>
 </div>
+
+<style>
+.modal-overlay{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  opacity:0;pointer-events:none;transition:opacity 0.3s
+}
+.modal-overlay.active{opacity:1;pointer-events:all}
+.modal-card{
+  background:linear-gradient(145deg,rgba(30,30,60,0.95),rgba(20,20,40,0.95));
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:24px;padding:36px 28px;max-width:360px;width:100%;
+  text-align:center;position:relative;
+  animation:popIn 0.5s cubic-bezier(0.68,-0.55,0.265,1.55)
+}
+@keyframes popIn{
+  from{transform:scale(0);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+.modal-close{
+  position:absolute;top:12px;right:16px;
+  background:rgba(255,255,255,0.1);border:none;color:#fff;
+  width:32px;height:32px;border-radius:50%;font-size:18px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center
+}
+</style>
 
 <script>
 // Ripple effect on tap
@@ -268,12 +310,16 @@ document.body.addEventListener('click',function(e){
   setTimeout(function(){r.remove()},600);
 });
 
-// Gift button
+// Gift button opens modal
 document.getElementById('giftBtn').onclick=function(){
-  document.getElementById('surprise').classList.toggle('hidden');
-  this.textContent=document.getElementById('surprise').classList.contains('hidden')?
-    '\uD83C\uDF81 BUKA HADIAH':'\uD83C\uDF81 TUTUP HADIAH';
+  document.getElementById('giftModal').classList.add('active');
 };
+document.getElementById('closeModal').onclick=function(){
+  document.getElementById('giftModal').classList.remove('active');
+};
+document.getElementById('giftModal').addEventListener('click',function(e){
+  if(e.target===this) this.classList.remove('active');
+});
 </script>
 </body>
 </html>
