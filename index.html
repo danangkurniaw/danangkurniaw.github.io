@@ -214,28 +214,26 @@ footer p{font-size:11px;color:var(--muted);font-weight:600}
     <span class="section-label">Uptime</span>
     <h2 class="section-title">Monitor Status</h2>
     <div style="display:flex;flex-direction:column;gap:12px;max-width:500px">
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between">
+      <div class="uptime-row" id="uptime-018" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between">
         <div>
           <strong style="font-size:15px">018.my.id</strong>
-          <div style="font-size:12px;color:var(--muted);margin-top:2px" id="uptimeUrl">https://018.my.id</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">https://018.my.id</div>
         </div>
         <div style="display:flex;align-items:center;gap:10px">
-          <span id="uptimeStatus" style="width:12px;height:12px;border-radius:50%;background:#999;display:inline-block"></span>
-          <span id="uptimeText" style="font-size:13px;font-weight:700;color:var(--muted)">Checking...</span>
+          <span class="uptime-dot" style="width:12px;height:12px;border-radius:50%;background:#999;display:inline-block"></span>
+          <span class="uptime-text" style="font-size:13px;font-weight:700;color:var(--muted)">—</span>
+          <span class="uptime-ms" style="font-size:11px;color:var(--muted)">—</span>
         </div>
       </div>
-      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:14px 20px;text-align:center;min-width:100px">
-          <div id="uptimePct" style="font-size:22px;font-weight:800;color:var(--green)">—</div>
-          <div style="font-size:10px;color:var(--muted);font-weight:600;letter-spacing:1px">UPTIME</div>
+      <div class="uptime-row" id="uptime-google" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <strong style="font-size:15px">Google</strong>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">https://google.com</div>
         </div>
-        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:14px 20px;text-align:center;min-width:100px">
-          <div id="uptimeLast" style="font-size:13px;font-weight:600;color:var(--muted)">—</div>
-          <div style="font-size:10px;color:var(--muted);font-weight:600;letter-spacing:1px">LAST CHECK</div>
-        </div>
-        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:14px 20px;text-align:center;min-width:100px">
-          <div id="uptimeMs" style="font-size:13px;font-weight:600;color:var(--muted)">—</div>
-          <div style="font-size:10px;color:var(--muted);font-weight:600;letter-spacing:1px">RESPONSE</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="uptime-dot" style="width:12px;height:12px;border-radius:50%;background:#999;display:inline-block"></span>
+          <span class="uptime-text" style="font-size:13px;font-weight:700;color:var(--muted)">—</span>
+          <span class="uptime-ms" style="font-size:11px;color:var(--muted)">—</span>
         </div>
       </div>
     </div>
@@ -295,32 +293,29 @@ function closeMenu(){document.getElementById('mobileDrawer').classList.remove('a
 
 // Uptime Monitor
 (function(){
-  var okCount=0,totalCount=0,startTime=Date.now();
-  var check=function(){
-    totalCount++;
+  var sites=[
+    {id:'018',url:'https://018.my.id/',row:'uptime-018'},
+    {id:'google',url:'https://google.com/',row:'uptime-google'},
+  ];
+  function check(s){
     var t0=Date.now();
-    fetch('https://018.my.id/',{mode:'no-cors'})
+    var dot=s.row.querySelector('.uptime-dot');
+    var txt=s.row.querySelector('.uptime-text');
+    var ms=s.row.querySelector('.uptime-ms');
+    fetch(s.url,{mode:'no-cors'})
       .then(function(){
-        okCount++;
-        var ms=Date.now()-t0;
-        var pct=Math.round((okCount/totalCount)*100);
-        document.getElementById('uptimeStatus').style.background='#38a169';
-        document.getElementById('uptimeText').textContent='Online';
-        document.getElementById('uptimeText').style.color='#38a169';
-        document.getElementById('uptimePct').textContent=pct+'%';
-        document.getElementById('uptimePct').style.color='#38a169';
-        document.getElementById('uptimeMs').textContent=ms+'ms';
-        document.getElementById('uptimeLast').textContent=new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+        dot.style.background='#38a169';txt.textContent='Online';txt.style.color='#38a169';
+        ms.textContent=(Date.now()-t0)+'ms';
       })
       .catch(function(){
-        document.getElementById('uptimeStatus').style.background='#e53e3e';
-        document.getElementById('uptimeText').textContent='Offline';
-        document.getElementById('uptimeText').style.color='#e53e3e';
-        document.getElementById('uptimeLast').textContent=new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+        dot.style.background='#e53e3e';txt.textContent='Offline';txt.style.color='#e53e3e';
+        ms.textContent='—';
       });
-  };
-  check();
-  setInterval(check,30000);
+  }
+  setTimeout(function(){
+    sites.forEach(function(s){s.row=document.getElementById(s.row);check(s)});
+  },500);
+  setInterval(function(){sites.forEach(function(s){check(s)})},30000);
 })();
 
 // Load blog posts
