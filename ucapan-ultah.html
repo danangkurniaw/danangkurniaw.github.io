@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title>Happy Birthday!</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:sans-serif;background:linear-gradient(135deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3);background-size:400% 400%;animation:bg 10s ease infinite;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow-x:hidden;padding:20px}
+@keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+.card{background:rgba(255,255,255,0.95);border-radius:24px;padding:32px 24px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);position:relative;overflow:hidden;animation:pop 0.6s cubic-bezier(0.68,-0.55,0.265,1.55)}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+
+.confetti{position:absolute;pointer-events:none}
+.cake{font-size:80px;animation:bounce 1s ease infinite;display:block;margin:0 auto 12px}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+h1{font-size:28px;color:#e74c3c;margin-bottom:8px;line-height:1.3}
+.subtitle{font-size:14px;color:#666;margin-bottom:20px;line-height:1.6}
+
+.balloons{display:flex;justify-content:center;gap:8px;margin:16px 0;flex-wrap:wrap}
+.balloon{font-size:40px;animation:float 3s ease-in-out infinite}
+.balloon:nth-child(1){animation-delay:0s}
+.balloon:nth-child(2){animation-delay:0.5s}
+.balloon:nth-child(3){animation-delay:1s}
+.balloon:nth-child(4){animation-delay:0.3s}
+.balloon:nth-child(5){animation-delay:0.8s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+.funny-list{text-align:left;margin:16px 0;padding:0 8px}
+.funny-list div{padding:10px 14px;margin:6px 0;background:#fef9e7;border-radius:12px;font-size:13px;color:#555;display:flex;align-items:center;gap:10px;animation:slideIn 0.5s ease backwards}
+.funny-list div:nth-child(1){animation-delay:0.2s}
+.funny-list div:nth-child(2){animation-delay:0.4s}
+.funny-list div:nth-child(3){animation-delay:0.6s}
+.funny-list div:nth-child(4){animation-delay:0.8s}
+.funny-list div:nth-child(5){animation-delay:1s}
+@keyframes slideIn{from{transform:translateX(-20px);opacity:0}to{transform:translateX(0);opacity:1}}
+
+.funny-list .emoji{font-size:24px;flex-shrink:0}
+
+.cta-btn{display:inline-block;background:linear-gradient(135deg,#ff6b6b,#ee5a24);color:#fff;border:none;padding:14px 36px;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;margin-top:16px;transition:transform 0.2s;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(238,90,36,0.4)}50%{box-shadow:0 0 0 16px rgba(238,90,36,0)}}
+.cta-btn:active{transform:scale(0.95)}
+
+.sparkle{position:absolute;font-size:20px;animation:sparkle 1.5s ease-out forwards;pointer-events:none}
+@keyframes sparkle{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(0)}}
+
+.hidden{display:none}
+.surprise{font-size:60px;animation:bounce 0.5s ease 3}
+</style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <span class="cake">&#x1F382;</span>
+  <h1>Happy Birthday!</h1>
+  <p class="subtitle">Semoga hari ini penuh tawa,<br>dan kue nya banyak banget sampe<br>gabisa diabisin sendiri.</p>
+  
+  <div class="balloons">
+    <span class="balloon">&#x1F388;</span>
+    <span class="balloon">&#x1F389;</span>
+    <span class="balloon">&#x1F38A;</span>
+    <span class="balloon">&#x1F38A;</span>
+    <span class="balloon">&#x1F388;</span>
+  </div>
+
+  <div class="funny-list">
+    <div><span class="emoji">&#x1F4AA;</span> Umur cuma angka. Tapi angka yg makin gede</div>
+    <div><span class="emoji">&#x1F3C3;</span> Lari dari kenyataan bahwa udah tua</div>
+    <div><span class="emoji">&#x1F48A;</span> Vitamin? Tolak. Yang penting bahagia</div>
+    <div><span class="emoji">&#x1F369;</span> Kue ulang tahun tidak mengandung kalori (mitos)</div>
+    <div><span class="emoji">&#x1F973;</span> Kamu bukan makin tua, kamu makin antik</div>
+  </div>
+
+  <button class="cta-btn" id="surpriseBtn">PENCET BUAT KEPO!</button>
+  
+  <div class="hidden" id="surprise">
+    <span class="surprise" style="display:block">&#x1F48C;</span>
+    <p style="font-size:15px;color:#e74c3c;margin-top:8px;font-weight:700">
+      Sebenarnya... aku cuma AI,<br>tapi Danang yg bikin ucapan ini.<br>Jadi ini special bgt! &#x1F60E;
+    </p>
+  </div>
+</div>
+
+<script>
+// Confetti rain
+function createConfetti(){
+  var emojis=['\uD83C\uDF89','\uD83C\uDF8A','\u2B50','\uD83C\uDF80','\u2764\uFE0F','\uD83C\uDF88'];
+  setInterval(function(){
+    var c=document.createElement('span');
+    c.className='sparkle';
+    c.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    c.style.left=Math.random()*100+'%';
+    c.style.top='-20px';
+    c.style.setProperty('--dx',(Math.random()-0.5)*100+'px');
+    c.style.setProperty('--dy',Math.random()*200+100+'px');
+    document.body.appendChild(c);
+    setTimeout(function(){c.remove()},1500);
+  },300);
+}
+createConfetti();
+
+// Surprise button
+document.getElementById('surpriseBtn').onclick=function(){
+  var s=document.getElementById('surprise');
+  s.classList.remove('hidden');
+  this.style.display='none';
+  
+  // Big confetti burst
+  for(var i=0;i<20;i++){
+    setTimeout(function(){
+      var c=document.createElement('span');
+      c.className='sparkle';
+      c.textContent='\uD83C\uDF89';
+      c.style.left='50%';
+      c.style.top='50%';
+      c.style.setProperty('--dx',(Math.random()-0.5)*300+'px');
+      c.style.setProperty('--dy',(Math.random()-0.5)*300+'px');
+      document.body.appendChild(c);
+      setTimeout(function(){c.remove()},1500);
+    },i*50);
+  }
+};
+</script>
+
+</body>
+</html>
