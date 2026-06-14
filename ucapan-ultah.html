@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-<title>&#x1F382; Happy Birthday!</title>
+<title>Happy Birthday!</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap');
 
@@ -18,29 +18,16 @@ body{
   position:relative;
 }
 
-/* Animated background bubbles */
 .bubbles{position:fixed;inset:0;pointer-events:none;z-index:0}
-.bubble{
-  position:absolute;border-radius:50%;
-  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.15),rgba(255,255,255,0.02));
-  animation:rise linear infinite;
-}
-.bubble:nth-child(1){width:80px;height:80px;left:10%;animation-duration:12s;animation-delay:0s}
+.bubble{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.15),rgba(255,255,255,0.02));animation:rise linear infinite}
+.bubble:nth-child(1){width:80px;height:80px;left:10%;animation-duration:12s}
 .bubble:nth-child(2){width:60px;height:60px;left:25%;animation-duration:10s;animation-delay:2s}
 .bubble:nth-child(3){width:100px;height:100px;left:45%;animation-duration:14s;animation-delay:1s}
 .bubble:nth-child(4){width:50px;height:50px;left:65%;animation-duration:8s;animation-delay:3s}
 .bubble:nth-child(5){width:70px;height:70px;left:80%;animation-duration:11s;animation-delay:0.5s}
 .bubble:nth-child(6){width:90px;height:90px;left:35%;animation-duration:15s;animation-delay:4s}
-.bubble:nth-child(7){width:45px;height:45px;left:55%;animation-duration:9s;animation-delay:1.5s}
-.bubble:nth-child(8){width:75px;height:75px;left:15%;animation-duration:13s;animation-delay:2.5s}
-@keyframes rise{
-  0%{bottom:-100px;opacity:0}
-  10%{opacity:0.6}
-  90%{opacity:0.3}
-  100%{bottom:110%;opacity:0}
-}
+@keyframes rise{0%{bottom:-100px;opacity:0}10%{opacity:0.6}90%{opacity:0.3}100%{bottom:110%;opacity:0}}
 
-/* Stars */
 .stars{position:fixed;inset:0;pointer-events:none;z-index:0}
 .star{position:absolute;background:#fff;border-radius:50%;animation:twinkle infinite alternate}
 .star:nth-child(1){width:2px;height:2px;top:10%;left:5%;animation-duration:1.5s}
@@ -49,203 +36,91 @@ body{
 .star:nth-child(4){width:2px;height:2px;top:50%;left:90%;animation-duration:1.3s;animation-delay:0.3s}
 .star:nth-child(5){width:3px;height:3px;top:70%;left:10%;animation-duration:2.2s;animation-delay:0.8s}
 .star:nth-child(6){width:2px;height:2px;top:80%;left:75%;animation-duration:1.6s;animation-delay:0.2s}
-.star:nth-child(7){width:1px;height:1px;top:15%;left:50%;animation-duration:1.9s;animation-delay:1.2s}
-.star:nth-child(8){width:2px;height:2px;top:60%;left:40%;animation-duration:1.4s;animation-delay:0.7s}
-@keyframes twinkle{
-  0%{opacity:0.3;transform:scale(1)}
-  100%{opacity:1;transform:scale(1.5)}
-}
+@keyframes twinkle{0%{opacity:0.3;transform:scale(1)}100%{opacity:1;transform:scale(1.5)}}
 
-.main{z-index:1;width:100%;max-width:400px;padding:20px}
+.main{z-index:1;width:100%;max-width:400px;padding:20px;margin:0 auto}
 
-/* Top section - birthday person */
-.person{
-  display:flex;flex-direction:column;align-items:center;margin-bottom:24px;
-  animation:slideDown 0.8s cubic-bezier(0.68,-0.55,0.265,1.55);
-}
-@keyframes slideDown{
-  from{transform:translateY(-40px);opacity:0}
-  to{transform:translateY(0);opacity:1}
-}
-.avatar{
-  width:80px;height:80px;border-radius:50%;
-  background:linear-gradient(135deg,#f093fb,#f5576c,#ffd452);
-  display:flex;align-items:center;justify-content:center;
-  font-size:40px;margin-bottom:10px;
-  box-shadow:0 8px 32px rgba(245,87,108,0.3);
-  animation:avatarPulse 2s ease infinite;
-}
-@keyframes avatarPulse{
-  0%,100%{box-shadow:0 8px 32px rgba(245,87,108,0.3)}
-  50%{box-shadow:0 8px 48px rgba(245,87,108,0.6)}
-}
-.person .label{
-  background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);
-  color:#ffd452;font-size:11px;font-weight:700;letter-spacing:2px;
-  padding:4px 16px;border-radius:20px;text-transform:uppercase
-}
+.person{display:flex;flex-direction:column;align-items:center;margin-bottom:20px;animation:slideDown 0.8s cubic-bezier(0.68,-0.55,0.265,1.55)}
+@keyframes slideDown{from{transform:translateY(-40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c,#ffd452);display:flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:10px;box-shadow:0 8px 32px rgba(245,87,108,0.3);animation:avatarPulse 2s ease infinite}
+@keyframes avatarPulse{0%,100%{box-shadow:0 8px 32px rgba(245,87,108,0.3)}50%{box-shadow:0 8px 48px rgba(245,87,108,0.6)}}
+.person .label{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);color:#ffd452;font-size:11px;font-weight:700;letter-spacing:2px;padding:4px 16px;border-radius:20px;text-transform:uppercase}
 
-/* Main card */
-.card{
-  background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);
+.card{background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:28px;padding:32px 20px;text-align:center;position:relative;overflow:hidden;animation:fadeIn 1s ease 0.2s backwards}
+@keyframes fadeIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+.emoji-big{font-size:56px;display:block;margin-bottom:8px;animation:bounce 2s ease infinite}
+@keyframes bounce{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-10px) rotate(-5deg)}75%{transform:translateY(-10px) rotate(5deg)}}
+
+.card h1{font-family:'Fredoka One',cursive;font-size:30px;background:linear-gradient(135deg,#f093fb,#f5576c,#ffd452);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.card .age{color:#ffd452;font-size:12px;font-weight:600;margin-bottom:18px}
+
+/* Buttons */
+.btns-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.btns-row button{
+  font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;
+  padding:10px 16px;border-radius:50px;border:none;cursor:pointer;
+  transition:all 0.2s;color:#fff;letter-spacing:0.5px;
+  background:rgba(255,255,255,0.1);backdrop-filter:blur(5px);
   border:1px solid rgba(255,255,255,0.1);
-  border-radius:28px;padding:36px 24px;text-align:center;
-  animation:fadeIn 1s ease 0.2s backwards;
-  position:relative;overflow:hidden;
 }
-.card::before{
-  content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
-  background:conic-gradient(transparent,rgba(255,255,255,0.03),transparent,rgba(255,255,255,0.03));
-  animation:rotate 8s linear infinite;
-}
-@keyframes rotate{to{transform:rotate(360deg)}}
-@keyframes fadeIn{
-  from{transform:translateY(20px);opacity:0}
-  to{transform:translateY(0);opacity:1}
-}
+.btns-row button:active{transform:scale(0.95)}
+.btns-row .btn-love{background:rgba(240,147,251,0.2);border-color:rgba(240,147,251,0.3)}
+.btns-row .btn-funny{background:rgba(255,212,82,0.2);border-color:rgba(255,212,82,0.3)}
+.btns-row .btn-wise{background:rgba(72,219,251,0.2);border-color:rgba(72,219,251,0.3)}
+.btns-row .btn-surprise{background:rgba(245,87,108,0.25);border-color:rgba(245,87,108,0.3);font-size:13px;padding:12px 20px;animation:glow 2s infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 rgba(245,87,108,0)}50%{box-shadow:0 0 24px rgba(245,87,108,0.4)}}
 
-.card>*{position:relative;z-index:1}
+/* Message bubble */
+.msg-bubble{
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
+  border-radius:18px;padding:18px 16px;margin-top:12px;min-height:60px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  transition:all 0.3s;position:relative
+}
+.msg-bubble .msg-text{color:rgba(255,255,255,0.8);font-size:14px;line-height:1.7;animation:popIn 0.4s ease}
+.msg-bubble .msg-emoji{font-size:28px;display:block;margin-bottom:6px}
+@keyframes popIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
 
-.emoji-big{font-size:64px;display:block;margin-bottom:12px;animation:bounce 2s ease infinite}
-@keyframes bounce{
-  0%,100%{transform:translateY(0) rotate(0deg)}
-  25%{transform:translateY(-10px) rotate(-5deg)}
-  75%{transform:translateY(-10px) rotate(5deg)}
-}
+/* Modal */
+.modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.modal-overlay.active{opacity:1;pointer-events:all}
+.modal-card{background:linear-gradient(145deg,rgba(30,30,60,0.95),rgba(20,20,40,0.95));border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:36px 28px;max-width:360px;width:100%;text-align:center;position:relative;animation:modalPop 0.5s cubic-bezier(0.68,-0.55,0.265,1.55)}
+@keyframes modalPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-close{position:absolute;top:12px;right:16px;background:rgba(255,255,255,0.1);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
 
-.card h1{
-  font-family:'Fredoka One',cursive;font-size:32px;
-  background:linear-gradient(135deg,#f093fb,#f5576c,#ffd452);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;margin-bottom:6px
-}
-.card .age{
-  color:#ffd452;font-size:13px;font-weight:600;letter-spacing:1px;margin-bottom:16px
-}
-.card .msg{
-  color:rgba(255,255,255,0.7);font-size:14px;line-height:1.8;margin-bottom:20px;
-  padding:0 8px
-}
-
-/* Jokes */
-.jokes{display:flex;flex-direction:column;gap:8px;margin:20px 0}
-.joke{
-  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);
-  border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;
-  text-align:left;color:rgba(255,255,255,0.6);font-size:13px;
-  transition:all 0.3s;
-  animation:slideUp 0.5s ease backwards;
-}
-.joke:nth-child(1){animation-delay:0.4s}
-.joke:nth-child(2){animation-delay:0.55s}
-.joke:nth-child(3){animation-delay:0.7s}
-.joke:nth-child(4){animation-delay:0.85s}
-.joke:nth-child(5){animation-delay:1s}
-@keyframes slideUp{
-  from{transform:translateY(16px);opacity:0}
-  to{transform:translateY(0);opacity:1}
-}
-.joke:active{background:rgba(255,255,255,0.1);transform:scale(0.98)}
-.joke .j-emoji{font-size:26px;flex-shrink:0;width:36px;text-align:center}
-
-/* Floating emojis */
-.floaters{position:fixed;inset:0;pointer-events:none;z-index:0}
-.floater{position:absolute;font-size:24px;animation:floating linear infinite}
-.floater:nth-child(1){left:5%;animation-duration:8s;animation-delay:0s}
-.floater:nth-child(2){left:25%;animation-duration:10s;animation-delay:2s}
-.floater:nth-child(3){left:45%;animation-duration:7s;animation-delay:1s}
-.floater:nth-child(4){left:65%;animation-duration:9s;animation-delay:3s}
-.floater:nth-child(5){left:85%;animation-duration:11s;animation-delay:0.5s}
-@keyframes floating{
-  0%{bottom:-50px;opacity:0}
-  10%{opacity:1}
-  90%{opacity:0.6}
-  100%{bottom:110%;opacity:0}
-}
-
-/* Button */
-.btn-wrap{margin-top:20px}
-.btn{
-  display:inline-block;background:linear-gradient(135deg,#f093fb,#f5576c);
-  color:#fff;border:none;padding:14px 32px;border-radius:50px;
-  font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;
-  cursor:pointer;transition:all 0.3s;box-shadow:0 8px 32px rgba(245,87,108,0.3);
-  letter-spacing:0.5px;position:relative;overflow:hidden;
-}
-.btn::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,#ffd452,#f5576c);
-  opacity:0;transition:opacity 0.3s
-}
-.btn:active::after{opacity:1}
-.btn:active{transform:scale(0.95)}
-.btn .shine{
-  position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);
-  animation:shine 2s infinite
-}
-@keyframes shine{to{left:200%}}
-
-.hidden{display:none}
-.surprise-msg{
-  margin-top:16px;padding:16px;
-  background:rgba(245,87,108,0.1);border-radius:14px;
-  color:rgba(255,255,255,0.8);font-size:14px;
-  animation:fadeIn 0.5s ease
-}
-
-/* Riak effect on tap */
-.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.2);transform:scale(0);animation:ripple 0.6s linear;pointer-events:none}
-@keyframes ripple{to{transform:scale(4);opacity:0}}
+/* Confetti particles */
+.particle{position:fixed;pointer-events:none;z-index:50;font-size:20px;animation:fall linear forwards}
+@keyframes fall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
 </style>
 </head>
 <body>
 
-<!-- Background -->
-<div class="stars">
-  <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
-  <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
-</div>
-<div class="bubbles">
-  <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
-  <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
-</div>
-<div class="floaters">
-  <span class="floater">&#x1F389;</span><span class="floater">&#x2B50;</span>
-  <span class="floater">&#x1F388;</span><span class="floater">&#x2764;</span>
-  <span class="floater">&#x1F4AB;</span>
-</div>
+<div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+<div class="bubbles"><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div></div>
 
-<!-- Main -->
 <div class="main">
   <div class="person">
     <div class="avatar">&#x1F973;</div>
     <span class="label">Birthday Person</span>
   </div>
 
-  <div class="card" id="card">
+  <div class="card">
     <span class="emoji-big">&#x1F382;</span>
     <h1>Happy Birthday!</h1>
     <p class="age">Level Up! +1 Tahun</p>
-    <p class="msg">
-      Hari ini spesial.<br>
-      Bukan karena tambah tua,<br>
-      tapi karena <b>kamu</b> yg spesial.
-    </p>
 
-    <div class="jokes">
-      <div class="joke"><span class="j-emoji">&#x1F495;</span>Kamu adalah alasan kenapa aku tersenyum setiap hari</div>
-      <div class="joke"><span class="j-emoji">&#x1F31F;</span>Kehadiranmu membuat dunia jadi lebih indah</div>
-      <div class="joke"><span class="j-emoji">&#x2764;</span>Setiap detik bersamamu adalah hadiah terindah</div>
-      <div class="joke"><span class="j-emoji">&#x1F338;</span>Kamu bukan cuma bertambah usia, tapi bertambah cantik/tampan</div>
-      <div class="joke"><span class="j-emoji">&#x1F48E;</span>Beruntungnya dunia punya kamu di dalamnya</div>
+    <p style="color:rgba(255,255,255,0.5);font-size:12px;margin-bottom:14px">&#x1F447; PENCET TOMBOLNYA &#x1F447;</p>
+
+    <div class="btns-row">
+      <button class="btn-love" onclick="showMsg('love')">&#x1F495; CINTA</button>
+      <button class="btn-funny" onclick="showMsg('funny')">&#x1F602; LUCU</button>
+      <button class="btn-wise" onclick="showMsg('wise')">&#x1F4A1; BIJAK</button>
+      <button class="btn-surprise" onclick="showMsg('surprise')">&#x1F381; HADIAH</button>
     </div>
 
-    <div class="btn-wrap">
-      <button class="btn" id="giftBtn">
-        <span class="shine"></span>
-        &#x1F381; BUKA HADIAH
-      </button>
+    <div class="msg-bubble" id="msgArea">
+      <span style="color:rgba(255,255,255,0.3);font-size:13px">Klik salah satu tombol di atas &#x1F446;</span>
     </div>
   </div>
 </div>
@@ -253,9 +128,9 @@ body{
 <!-- Modal -->
 <div class="modal-overlay" id="giftModal">
   <div class="modal-card">
-    <button class="modal-close" id="closeModal">&times;</button>
+    <button class="modal-close" onclick="closeModal()">&times;</button>
     <span style="font-size:56px;display:block;margin-bottom:8px">&#x1F48C;</span>
-    <h2 style="font-family:'Fredoka One',cursive;font-size:22px;color:#f5576c;margin-bottom:16px">Pesan Khusus</h2>
+    <h2 style="font-family:'Fredoka One',cursive;font-size:22px;color:#f5576c;margin-bottom:16px">Pesan Spesial</h2>
     <p style="color:rgba(255,255,255,0.7);font-size:14px;line-height:2">
       Kamu luar biasa.<br>
       Jangan pernah berhenti jadi diri sendiri.<br>
@@ -263,7 +138,7 @@ body{
       Selamat ulang tahun.<br>
       Semoga semua impianmu tercapai.<br>
       Aku selalu di sini untukmu.<br><br>
-      <span style="opacity:0.5;font-size:11px">— dikirim oleh Danang via AI &#x1F916;</span>
+      <span style="opacity:0.5;font-size:11px">— dari Danang via AI &#x1F916;</span>
     </p>
     <div style="margin-top:20px;font-size:32px;display:flex;gap:12px;justify-content:center">
       <span style="animation:bounce 1s ease infinite">&#x1F495;</span>
@@ -273,53 +148,51 @@ body{
   </div>
 </div>
 
-<style>
-.modal-overlay{
-  position:fixed;inset:0;z-index:100;
-  background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);
-  display:flex;align-items:center;justify-content:center;padding:24px;
-  opacity:0;pointer-events:none;transition:opacity 0.3s
-}
-.modal-overlay.active{opacity:1;pointer-events:all}
-.modal-card{
-  background:linear-gradient(145deg,rgba(30,30,60,0.95),rgba(20,20,40,0.95));
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:24px;padding:36px 28px;max-width:360px;width:100%;
-  text-align:center;position:relative;
-  animation:popIn 0.5s cubic-bezier(0.68,-0.55,0.265,1.55)
-}
-@keyframes popIn{
-  from{transform:scale(0);opacity:0}
-  to{transform:scale(1);opacity:1}
-}
-.modal-close{
-  position:absolute;top:12px;right:16px;
-  background:rgba(255,255,255,0.1);border:none;color:#fff;
-  width:32px;height:32px;border-radius:50%;font-size:18px;
-  cursor:pointer;display:flex;align-items:center;justify-content:center
-}
-</style>
-
 <script>
-// Ripple effect on tap
-document.body.addEventListener('click',function(e){
-  var r=document.createElement('span');r.className='ripple';
-  r.style.left=e.clientX-10+'px';r.style.top=e.clientY-10+'px';
-  r.style.width='20px';r.style.height='20px';
-  document.body.appendChild(r);
-  setTimeout(function(){r.remove()},600);
-});
+var messages={
+  love:['Kamu adalah alasan kenapa aku tersenyum setiap hari \uD83D\uDE0D','Kehadiranmu membuat hidupku lebih berwarna \uD83C\uDF08','Setiap detik bersamamu adalah hadiah \uD83C\uDF81','Kamu bukan cuma cantik/tampan. Kamu rumah. \uD83C\uDFE0','Aku jatuh cinta setiap kali lihat kamu \uD83D\uDC98'],
+  funny:['Umur cuma angka. Dompet yg makin tipis pas traktir \uD83D\uDCB8','Makin tua? Nggak. Cuma makin VINTAGE \uD83C\uDF7E','Kalori kue ultah = 0. Percayalah \uD83C\uDF70','Kamu bukan tua. Kamu LIMITED EDITION \uD83C\uDF1F','Tiup lilinnya pelan2. Nanti copot giginya \uD83D\uDE02'],
+  wise:['Hidup itu seperti kue. Kadang manis, kadang bantat. Tapi tetap layak dinikmati \uD83C\uDF70','Umur bertambah adalah privilege. Tidak semua orang seberuntung kamu \u2728','Jangan takut gagal. Yang penting udah nyoba dan KENYANG \uD83C\uDF5C','Kamu adalah penulis ceritamu sendiri. Tulis yang EPIC \uD83D\uDCD6','Hari ini milestone. Bukan finish line. Still loading... \u23F3'],
+  surprise:[]
+};
 
-// Gift button opens modal
-document.getElementById('giftBtn').onclick=function(){
-  document.getElementById('giftModal').classList.add('active');
-};
-document.getElementById('closeModal').onclick=function(){
-  document.getElementById('giftModal').classList.remove('active');
-};
-document.getElementById('giftModal').addEventListener('click',function(e){
-  if(e.target===this) this.classList.remove('active');
-});
+function showMsg(type){
+  if(type==='surprise'){
+    document.getElementById('giftModal').classList.add('active');
+    burstConfetti();
+    return;
+  }
+  var arr=messages[type];
+  var msg=arr[Math.floor(Math.random()*arr.length)];
+  var a=document.getElementById('msgArea');
+  a.innerHTML='<div class=\"msg-text\"><span class=\"msg-emoji\">'+getEmoji(type)+'</span>'+msg+'</div>';
+  a.style.background='rgba(255,255,255,0.08)';
+  setTimeout(function(){a.style.background='rgba(255,255,255,0.05)'},300);
+}
+
+function getEmoji(c){
+  if(c==='love') return '\uD83D\uDC95';
+  if(c==='funny') return '\uD83D\uDE04';
+  return '\u2728';
+}
+
+function closeModal(){document.getElementById('giftModal').classList.remove('active')}
+document.getElementById('giftModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
+
+function burstConfetti(){
+  var e=['\uD83C\uDF89','\uD83C\uDF8A','\u2B50','\u2764\uFE0F','\uD83C\uDF80','\uD83C\uDF88','\uD83D\uDC95','\uD83C\uDF38'];
+  for(var i=0;i<30;i++){
+    setTimeout(function(){
+      var p=document.createElement('span');p.className='particle';
+      p.textContent=e[Math.floor(Math.random()*e.length)];
+      p.style.left=Math.random()*100+'%';
+      p.style.top='-20px';
+      p.style.animationDuration=(Math.random()*2+1.5)+'s';
+      document.body.appendChild(p);
+      setTimeout(function(){p.remove()},3000);
+    },i*40);
+  }
+}
 </script>
 </body>
 </html>
