@@ -3,126 +3,277 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-<title>Happy Birthday!</title>
+<title>&#x1F382; Happy Birthday!</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap');
+
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:sans-serif;background:linear-gradient(135deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3);background-size:400% 400%;animation:bg 10s ease infinite;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow-x:hidden;padding:20px}
-@keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
-.card{background:rgba(255,255,255,0.95);border-radius:24px;padding:32px 24px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);position:relative;overflow:hidden;animation:pop 0.6s cubic-bezier(0.68,-0.55,0.265,1.55)}
-@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+body{
+  font-family:'Nunito',sans-serif;
+  background:#0f0c29;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  min-height:100vh;overflow-x:hidden;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
 
-.confetti{position:absolute;pointer-events:none}
-.cake{font-size:80px;animation:bounce 1s ease infinite;display:block;margin:0 auto 12px}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+/* Animated background bubbles */
+.bubbles{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bubble{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.15),rgba(255,255,255,0.02));
+  animation:rise linear infinite;
+}
+.bubble:nth-child(1){width:80px;height:80px;left:10%;animation-duration:12s;animation-delay:0s}
+.bubble:nth-child(2){width:60px;height:60px;left:25%;animation-duration:10s;animation-delay:2s}
+.bubble:nth-child(3){width:100px;height:100px;left:45%;animation-duration:14s;animation-delay:1s}
+.bubble:nth-child(4){width:50px;height:50px;left:65%;animation-duration:8s;animation-delay:3s}
+.bubble:nth-child(5){width:70px;height:70px;left:80%;animation-duration:11s;animation-delay:0.5s}
+.bubble:nth-child(6){width:90px;height:90px;left:35%;animation-duration:15s;animation-delay:4s}
+.bubble:nth-child(7){width:45px;height:45px;left:55%;animation-duration:9s;animation-delay:1.5s}
+.bubble:nth-child(8){width:75px;height:75px;left:15%;animation-duration:13s;animation-delay:2.5s}
+@keyframes rise{
+  0%{bottom:-100px;opacity:0}
+  10%{opacity:0.6}
+  90%{opacity:0.3}
+  100%{bottom:110%;opacity:0}
+}
 
-h1{font-size:28px;color:#e74c3c;margin-bottom:8px;line-height:1.3}
-.subtitle{font-size:14px;color:#666;margin-bottom:20px;line-height:1.6}
+/* Stars */
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle infinite alternate}
+.star:nth-child(1){width:2px;height:2px;top:10%;left:5%;animation-duration:1.5s}
+.star:nth-child(2){width:3px;height:3px;top:20%;left:85%;animation-duration:2s;animation-delay:0.5s}
+.star:nth-child(3){width:1px;height:1px;top:35%;left:20%;animation-duration:1.8s;animation-delay:1s}
+.star:nth-child(4){width:2px;height:2px;top:50%;left:90%;animation-duration:1.3s;animation-delay:0.3s}
+.star:nth-child(5){width:3px;height:3px;top:70%;left:10%;animation-duration:2.2s;animation-delay:0.8s}
+.star:nth-child(6){width:2px;height:2px;top:80%;left:75%;animation-duration:1.6s;animation-delay:0.2s}
+.star:nth-child(7){width:1px;height:1px;top:15%;left:50%;animation-duration:1.9s;animation-delay:1.2s}
+.star:nth-child(8){width:2px;height:2px;top:60%;left:40%;animation-duration:1.4s;animation-delay:0.7s}
+@keyframes twinkle{
+  0%{opacity:0.3;transform:scale(1)}
+  100%{opacity:1;transform:scale(1.5)}
+}
 
-.balloons{display:flex;justify-content:center;gap:8px;margin:16px 0;flex-wrap:wrap}
-.balloon{font-size:40px;animation:float 3s ease-in-out infinite}
-.balloon:nth-child(1){animation-delay:0s}
-.balloon:nth-child(2){animation-delay:0.5s}
-.balloon:nth-child(3){animation-delay:1s}
-.balloon:nth-child(4){animation-delay:0.3s}
-.balloon:nth-child(5){animation-delay:0.8s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.main{z-index:1;width:100%;max-width:400px;padding:20px}
 
-.funny-list{text-align:left;margin:16px 0;padding:0 8px}
-.funny-list div{padding:10px 14px;margin:6px 0;background:#fef9e7;border-radius:12px;font-size:13px;color:#555;display:flex;align-items:center;gap:10px;animation:slideIn 0.5s ease backwards}
-.funny-list div:nth-child(1){animation-delay:0.2s}
-.funny-list div:nth-child(2){animation-delay:0.4s}
-.funny-list div:nth-child(3){animation-delay:0.6s}
-.funny-list div:nth-child(4){animation-delay:0.8s}
-.funny-list div:nth-child(5){animation-delay:1s}
-@keyframes slideIn{from{transform:translateX(-20px);opacity:0}to{transform:translateX(0);opacity:1}}
+/* Top section - birthday person */
+.person{
+  display:flex;flex-direction:column;align-items:center;margin-bottom:24px;
+  animation:slideDown 0.8s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+@keyframes slideDown{
+  from{transform:translateY(-40px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+.avatar{
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,#f093fb,#f5576c,#ffd452);
+  display:flex;align-items:center;justify-content:center;
+  font-size:40px;margin-bottom:10px;
+  box-shadow:0 8px 32px rgba(245,87,108,0.3);
+  animation:avatarPulse 2s ease infinite;
+}
+@keyframes avatarPulse{
+  0%,100%{box-shadow:0 8px 32px rgba(245,87,108,0.3)}
+  50%{box-shadow:0 8px 48px rgba(245,87,108,0.6)}
+}
+.person .label{
+  background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);
+  color:#ffd452;font-size:11px;font-weight:700;letter-spacing:2px;
+  padding:4px 16px;border-radius:20px;text-transform:uppercase
+}
 
-.funny-list .emoji{font-size:24px;flex-shrink:0}
+/* Main card */
+.card{
+  background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:28px;padding:36px 24px;text-align:center;
+  animation:fadeIn 1s ease 0.2s backwards;
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:conic-gradient(transparent,rgba(255,255,255,0.03),transparent,rgba(255,255,255,0.03));
+  animation:rotate 8s linear infinite;
+}
+@keyframes rotate{to{transform:rotate(360deg)}}
+@keyframes fadeIn{
+  from{transform:translateY(20px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
 
-.cta-btn{display:inline-block;background:linear-gradient(135deg,#ff6b6b,#ee5a24);color:#fff;border:none;padding:14px 36px;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;margin-top:16px;transition:transform 0.2s;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(238,90,36,0.4)}50%{box-shadow:0 0 0 16px rgba(238,90,36,0)}}
-.cta-btn:active{transform:scale(0.95)}
+.card>*{position:relative;z-index:1}
 
-.sparkle{position:absolute;font-size:20px;animation:sparkle 1.5s ease-out forwards;pointer-events:none}
-@keyframes sparkle{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(0)}}
+.emoji-big{font-size:64px;display:block;margin-bottom:12px;animation:bounce 2s ease infinite}
+@keyframes bounce{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  25%{transform:translateY(-10px) rotate(-5deg)}
+  75%{transform:translateY(-10px) rotate(5deg)}
+}
+
+.card h1{
+  font-family:'Fredoka One',cursive;font-size:32px;
+  background:linear-gradient(135deg,#f093fb,#f5576c,#ffd452);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;margin-bottom:6px
+}
+.card .age{
+  color:#ffd452;font-size:13px;font-weight:600;letter-spacing:1px;margin-bottom:16px
+}
+.card .msg{
+  color:rgba(255,255,255,0.7);font-size:14px;line-height:1.8;margin-bottom:20px;
+  padding:0 8px
+}
+
+/* Jokes */
+.jokes{display:flex;flex-direction:column;gap:8px;margin:20px 0}
+.joke{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);
+  border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;
+  text-align:left;color:rgba(255,255,255,0.6);font-size:13px;
+  transition:all 0.3s;
+  animation:slideUp 0.5s ease backwards;
+}
+.joke:nth-child(1){animation-delay:0.4s}
+.joke:nth-child(2){animation-delay:0.55s}
+.joke:nth-child(3){animation-delay:0.7s}
+.joke:nth-child(4){animation-delay:0.85s}
+.joke:nth-child(5){animation-delay:1s}
+@keyframes slideUp{
+  from{transform:translateY(16px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+.joke:active{background:rgba(255,255,255,0.1);transform:scale(0.98)}
+.joke .j-emoji{font-size:26px;flex-shrink:0;width:36px;text-align:center}
+
+/* Floating emojis */
+.floaters{position:fixed;inset:0;pointer-events:none;z-index:0}
+.floater{position:absolute;font-size:24px;animation:floating linear infinite}
+.floater:nth-child(1){left:5%;animation-duration:8s;animation-delay:0s}
+.floater:nth-child(2){left:25%;animation-duration:10s;animation-delay:2s}
+.floater:nth-child(3){left:45%;animation-duration:7s;animation-delay:1s}
+.floater:nth-child(4){left:65%;animation-duration:9s;animation-delay:3s}
+.floater:nth-child(5){left:85%;animation-duration:11s;animation-delay:0.5s}
+@keyframes floating{
+  0%{bottom:-50px;opacity:0}
+  10%{opacity:1}
+  90%{opacity:0.6}
+  100%{bottom:110%;opacity:0}
+}
+
+/* Button */
+.btn-wrap{margin-top:20px}
+.btn{
+  display:inline-block;background:linear-gradient(135deg,#f093fb,#f5576c);
+  color:#fff;border:none;padding:14px 32px;border-radius:50px;
+  font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;
+  cursor:pointer;transition:all 0.3s;box-shadow:0 8px 32px rgba(245,87,108,0.3);
+  letter-spacing:0.5px;position:relative;overflow:hidden;
+}
+.btn::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,#ffd452,#f5576c);
+  opacity:0;transition:opacity 0.3s
+}
+.btn:active::after{opacity:1}
+.btn:active{transform:scale(0.95)}
+.btn .shine{
+  position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);
+  animation:shine 2s infinite
+}
+@keyframes shine{to{left:200%}}
 
 .hidden{display:none}
-.surprise{font-size:60px;animation:bounce 0.5s ease 3}
+.surprise-msg{
+  margin-top:16px;padding:16px;
+  background:rgba(245,87,108,0.1);border-radius:14px;
+  color:rgba(255,255,255,0.8);font-size:14px;
+  animation:fadeIn 0.5s ease
+}
+
+/* Riak effect on tap */
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.2);transform:scale(0);animation:ripple 0.6s linear;pointer-events:none}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
 </style>
 </head>
 <body>
 
-<div class="card" id="card">
-  <span class="cake">&#x1F382;</span>
-  <h1>Happy Birthday!</h1>
-  <p class="subtitle">Semoga hari ini penuh tawa,<br>dan kue nya banyak banget sampe<br>gabisa diabisin sendiri.</p>
-  
-  <div class="balloons">
-    <span class="balloon">&#x1F388;</span>
-    <span class="balloon">&#x1F389;</span>
-    <span class="balloon">&#x1F38A;</span>
-    <span class="balloon">&#x1F38A;</span>
-    <span class="balloon">&#x1F388;</span>
+<!-- Background -->
+<div class="stars">
+  <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+  <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+</div>
+<div class="bubbles">
+  <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+  <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+</div>
+<div class="floaters">
+  <span class="floater">&#x1F389;</span><span class="floater">&#x2B50;</span>
+  <span class="floater">&#x1F388;</span><span class="floater">&#x2764;</span>
+  <span class="floater">&#x1F4AB;</span>
+</div>
+
+<!-- Main -->
+<div class="main">
+  <div class="person">
+    <div class="avatar">&#x1F973;</div>
+    <span class="label">Birthday Person</span>
   </div>
 
-  <div class="funny-list">
-    <div><span class="emoji">&#x1F4AA;</span> Umur cuma angka. Tapi angka yg makin gede</div>
-    <div><span class="emoji">&#x1F3C3;</span> Lari dari kenyataan bahwa udah tua</div>
-    <div><span class="emoji">&#x1F48A;</span> Vitamin? Tolak. Yang penting bahagia</div>
-    <div><span class="emoji">&#x1F369;</span> Kue ulang tahun tidak mengandung kalori (mitos)</div>
-    <div><span class="emoji">&#x1F973;</span> Kamu bukan makin tua, kamu makin antik</div>
-  </div>
-
-  <button class="cta-btn" id="surpriseBtn">PENCET BUAT KEPO!</button>
-  
-  <div class="hidden" id="surprise">
-    <span class="surprise" style="display:block">&#x1F48C;</span>
-    <p style="font-size:15px;color:#e74c3c;margin-top:8px;font-weight:700">
-      Sebenarnya... aku cuma AI,<br>tapi Danang yg bikin ucapan ini.<br>Jadi ini special bgt! &#x1F60E;
+  <div class="card" id="card">
+    <span class="emoji-big">&#x1F382;</span>
+    <h1>Happy Birthday!</h1>
+    <p class="age">Level Up! +1 Tahun</p>
+    <p class="msg">
+      Hari ini spesial.<br>
+      Bukan karena tambah tua,<br>
+      tapi karena <b>kamu</b> yg spesial.
     </p>
+
+    <div class="jokes">
+      <div class="joke"><span class="j-emoji">&#x1F4AA;</span>Umur cuma angka — angka yg bikin dompet makin tipis pas traktir</div>
+      <div class="joke"><span class="j-emoji">&#x1F3C3;</span>Makin tua? Nggak. Cuma makin <i>vintage</i> edition</div>
+      <div class="joke"><span class="j-emoji">&#x1F369;</span>Kalori kue ulang tahun = 0. Percayalah.</div>
+      <div class="joke"><span class="j-emoji">&#x1F4B0;</span>Semoga rejeki lancar, biar traktirannya makin banyak</div>
+      <div class="joke"><span class="j-emoji">&#x1F973;</span>Kamu bukan tua. Kamu klasik. Limited edition.</div>
+    </div>
+
+    <div class="btn-wrap">
+      <button class="btn" id="giftBtn">
+        <span class="shine"></span>
+        &#x1F381; BUKA HADIAH
+      </button>
+    </div>
+
+    <div class="hidden surprise-msg" id="surprise">
+      <p style="font-size:16px;margin-bottom:6px">&#x1F48C; Pesan Khusus:</p>
+      <p>Kamu luar biasa.<br>
+      Jangan pernah berhenti jadi diri sendiri.<br>
+      Dunia butuh orang seperti kamu.<br><br>
+      <span style="opacity:0.6;font-size:12px">— dikirim oleh Danang via AI &#x1F916;</span></p>
+    </div>
   </div>
 </div>
 
 <script>
-// Confetti rain
-function createConfetti(){
-  var emojis=['\uD83C\uDF89','\uD83C\uDF8A','\u2B50','\uD83C\uDF80','\u2764\uFE0F','\uD83C\uDF88'];
-  setInterval(function(){
-    var c=document.createElement('span');
-    c.className='sparkle';
-    c.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-    c.style.left=Math.random()*100+'%';
-    c.style.top='-20px';
-    c.style.setProperty('--dx',(Math.random()-0.5)*100+'px');
-    c.style.setProperty('--dy',Math.random()*200+100+'px');
-    document.body.appendChild(c);
-    setTimeout(function(){c.remove()},1500);
-  },300);
-}
-createConfetti();
+// Ripple effect on tap
+document.body.addEventListener('click',function(e){
+  var r=document.createElement('span');r.className='ripple';
+  r.style.left=e.clientX-10+'px';r.style.top=e.clientY-10+'px';
+  r.style.width='20px';r.style.height='20px';
+  document.body.appendChild(r);
+  setTimeout(function(){r.remove()},600);
+});
 
-// Surprise button
-document.getElementById('surpriseBtn').onclick=function(){
-  var s=document.getElementById('surprise');
-  s.classList.remove('hidden');
-  this.style.display='none';
-  
-  // Big confetti burst
-  for(var i=0;i<20;i++){
-    setTimeout(function(){
-      var c=document.createElement('span');
-      c.className='sparkle';
-      c.textContent='\uD83C\uDF89';
-      c.style.left='50%';
-      c.style.top='50%';
-      c.style.setProperty('--dx',(Math.random()-0.5)*300+'px');
-      c.style.setProperty('--dy',(Math.random()-0.5)*300+'px');
-      document.body.appendChild(c);
-      setTimeout(function(){c.remove()},1500);
-    },i*50);
-  }
+// Gift button
+document.getElementById('giftBtn').onclick=function(){
+  document.getElementById('surprise').classList.toggle('hidden');
+  this.textContent=document.getElementById('surprise').classList.contains('hidden')?
+    '\uD83C\uDF81 BUKA HADIAH':'\uD83C\uDF81 TUTUP HADIAH';
 };
 </script>
-
 </body>
 </html>
