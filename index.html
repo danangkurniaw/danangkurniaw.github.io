@@ -315,7 +315,7 @@ function closeMenu(){document.getElementById('mobileDrawer').classList.remove('a
   setTimeout(function(){
     sites.forEach(function(s){s.row=document.getElementById(s.row);check(s)});
   },500);
-  setInterval(function(){sites.forEach(function(s){check(s)})},30000);
+  setInterval(function(){sites.forEach(function(s){check(s)})},5000);
 })();
 
 // Load blog posts
