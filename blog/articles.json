@@ -1,5 +1,13 @@
 [
   {
+    "id": 6,
+    "date": "14 Jun 2026",
+    "title": "NGINX Reverse Proxy: From Zero to HTTPS in 10 Minutes",
+    "category": "DevOps",
+    "summary": "Set up a reverse proxy with automatic SSL using NGINX and Let's Encrypt. Complete walkthrough for beginners.",
+    "content": "A reverse proxy sits between clients and your backend servers, routing traffic and handling SSL termination. NGINX is the industry standard for this job.<br><br><b>Step 1: Install NGINX</b><br><code>apt update && apt install nginx -y</code><br><code>systemctl enable --now nginx</code><br><br><b>Step 2: Basic Reverse Proxy Config</b><br>Create a config file at <code>/etc/nginx/sites-available/myapp</code>:<br><code>server {<br>  listen 80;<br>  server_name example.com;<br>  location / {<br>    proxy_pass http://localhost:3000;<br>    proxy_set_header Host ;<br>    proxy_set_header X-Real-IP ;<br>  }<br>}</code><br>Enable it: <code>ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/</code><br><br><b>Step 3: Test and Reload</b><br><code>nginx -t</code><br><code>systemctl reload nginx</code><br><br><b>Step 4: Add SSL with Certbot</b><br><code>apt install certbot python3-certbot-nginx -y</code><br><code>certbot --nginx -d example.com</code><br>Certbot automatically modifies your NGINX config and sets up auto-renewal.<br><br><b>Step 5: Auto-Renewal</b><br>Certbot adds a systemd timer. Verify with:<br><code>systemctl status certbot.timer</code><br><br>Now you have a production-ready reverse proxy with automatic HTTPS. Add more backends by creating additional server blocks. Simple, fast, and secure."
+  },
+  {
     "id": 1,
     "date": "14 Jun 2026",
     "title": "10 Essential Linux Commands Every SysAdmin Should Know",
