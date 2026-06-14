@@ -214,26 +214,43 @@ footer p{font-size:11px;color:var(--muted);font-weight:600}
     <span class="section-label">Uptime</span>
     <h2 class="section-title">Monitor Status</h2>
     <div style="display:flex;flex-direction:column;gap:12px;max-width:500px">
-      <div class="uptime-row" id="uptime-018" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between">
-        <div>
+      <!-- 018.my.id -->
+      <div class="uptime-row" id="uptime-018" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+        <div style="flex:1;min-width:120px">
           <strong style="font-size:15px">018.my.id</strong>
-          <div style="font-size:12px;color:var(--muted);margin-top:2px">https://018.my.id</div>
+          <div style="font-size:11px;color:var(--muted)">Landing Page</div>
         </div>
-        <div style="display:flex;align-items:center;gap:10px">
+        <div style="display:flex;align-items:center;gap:16px">
+          <span class="uptime-pct" style="font-size:12px;font-weight:700;color:var(--muted);min-width:40px;text-align:right">—</span>
           <span class="uptime-dot" style="width:12px;height:12px;border-radius:50%;background:#999;display:inline-block"></span>
           <span class="uptime-text" style="font-size:13px;font-weight:700;color:var(--muted)">—</span>
-          <span class="uptime-ms" style="font-size:11px;color:var(--muted)">—</span>
+          <span class="uptime-ms" style="font-size:11px;color:var(--muted);min-width:35px">—</span>
         </div>
       </div>
-      <div class="uptime-row" id="uptime-google" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between">
-        <div>
+      <!-- Google -->
+      <div class="uptime-row" id="uptime-google" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+        <div style="flex:1;min-width:120px">
           <strong style="font-size:15px">Google</strong>
-          <div style="font-size:12px;color:var(--muted);margin-top:2px">https://google.com</div>
+          <div style="font-size:11px;color:var(--muted)">Benchmark</div>
         </div>
-        <div style="display:flex;align-items:center;gap:10px">
+        <div style="display:flex;align-items:center;gap:16px">
+          <span class="uptime-pct" style="font-size:12px;font-weight:700;color:var(--muted);min-width:40px;text-align:right">—</span>
           <span class="uptime-dot" style="width:12px;height:12px;border-radius:50%;background:#999;display:inline-block"></span>
           <span class="uptime-text" style="font-size:13px;font-weight:700;color:var(--muted)">—</span>
-          <span class="uptime-ms" style="font-size:11px;color:var(--muted)">—</span>
+          <span class="uptime-ms" style="font-size:11px;color:var(--muted);min-width:35px">—</span>
+        </div>
+      </div>
+      <!-- down.018.my.id -->
+      <div class="uptime-row" id="uptime-down" style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+        <div style="flex:1;min-width:120px">
+          <strong style="font-size:15px">down.018.my.id</strong>
+          <div style="font-size:11px;color:var(--muted)">Demo Down</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <span class="uptime-pct" style="font-size:12px;font-weight:700;color:var(--muted);min-width:40px;text-align:right">—</span>
+          <span class="uptime-dot" style="width:12px;height:12px;border-radius:50%;background:#999;display:inline-block"></span>
+          <span class="uptime-text" style="font-size:13px;font-weight:700;color:var(--muted)">—</span>
+          <span class="uptime-ms" style="font-size:11px;color:var(--muted);min-width:35px">—</span>
         </div>
       </div>
     </div>
@@ -294,16 +311,24 @@ function closeMenu(){document.getElementById('mobileDrawer').classList.remove('a
 // Uptime Monitor
 (function(){
   var sites=[
-    {id:'018',url:'https://018.my.id/',row:'uptime-018'},
-    {id:'google',url:'https://google.com/',row:'uptime-google'},
+    {id:'018',url:'https://018.my.id/'},
+    {id:'google',url:'https://google.com/'},
+    {id:'down',url:'https://down.018.my.id/'},
   ];
+  sites.forEach(function(s){
+    s.ok=0;s.total=0;
+    s.row=document.getElementById('uptime-'+s.id);
+  });
   function check(s){
+    s.total++;
     var t0=Date.now();
     var dot=s.row.querySelector('.uptime-dot');
     var txt=s.row.querySelector('.uptime-text');
     var ms=s.row.querySelector('.uptime-ms');
+    var pct=s.row.querySelector('.uptime-pct');
     fetch(s.url,{mode:'no-cors'})
       .then(function(){
+        s.ok++;
         dot.style.background='#38a169';txt.textContent='Online';txt.style.color='#38a169';
         ms.textContent=(Date.now()-t0)+'ms';
       })
@@ -311,10 +336,11 @@ function closeMenu(){document.getElementById('mobileDrawer').classList.remove('a
         dot.style.background='#e53e3e';txt.textContent='Offline';txt.style.color='#e53e3e';
         ms.textContent='—';
       });
+    var percent=s.total?Math.round((s.ok/s.total)*100):0;
+    pct.textContent=percent+'%';
+    pct.style.color=percent===100?'#38a169':percent>=90?'#f0a000':'#e53e3e';
   }
-  setTimeout(function(){
-    sites.forEach(function(s){s.row=document.getElementById(s.row);check(s)});
-  },500);
+  setTimeout(function(){sites.forEach(function(s){check(s)})},500);
   setInterval(function(){sites.forEach(function(s){check(s)})},5000);
 })();
 
