@@ -316,7 +316,9 @@ function closeMenu(){document.getElementById('mobileDrawer').classList.remove('a
     {id:'down',url:'https://down.018.my.id/'},
   ];
   sites.forEach(function(s){
-    s.ok=0;s.total=0;
+    // Load saved counters from localStorage
+    var saved=JSON.parse(localStorage.getItem('uptime_'+s.id)||'{"ok":0,"total":0}');
+    s.ok=saved.ok;s.total=saved.total;
     s.row=document.getElementById('uptime-'+s.id);
   });
   function check(s){
@@ -335,10 +337,14 @@ function closeMenu(){document.getElementById('mobileDrawer').classList.remove('a
       .catch(function(){
         dot.style.background='#e53e3e';txt.textContent='Offline';txt.style.color='#e53e3e';
         ms.textContent='—';
+      })
+      .finally(function(){
+        var percent=s.total?Math.round((s.ok/s.total)*100):0;
+        pct.textContent=percent+'%';
+        pct.style.color=percent===100?'#38a169':percent>=90?'#f0a000':'#e53e3e';
+        // Save to localStorage
+        localStorage.setItem('uptime_'+s.id,JSON.stringify({ok:s.ok,total:s.total}));
       });
-    var percent=s.total?Math.round((s.ok/s.total)*100):0;
-    pct.textContent=percent+'%';
-    pct.style.color=percent===100?'#38a169':percent>=90?'#f0a000':'#e53e3e';
   }
   setTimeout(function(){sites.forEach(function(s){check(s)})},500);
   setInterval(function(){sites.forEach(function(s){check(s)})},5000);
