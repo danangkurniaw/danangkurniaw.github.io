@@ -1,5 +1,13 @@
 [
   {
+    "id": 7,
+    "date": "15 Jun 2026",
+    "title": "Linux Log Management: Centralize Everything with rsyslog",
+    "category": "Linux",
+    "summary": "Stop SSH-ing into every server to read logs. Centralize them all in one place with rsyslog — simple, fast, built-in.",
+    "content": "When you manage more than three servers, checking logs on each one becomes a nightmare. rsyslog is the built-in Linux solution for centralized logging — no extra software needed.<br><br><b>Architecture</b><br>One central log server receives logs from all client servers. Each client forwards its syslog messages to the central server via TCP or UDP.<br><br><b>Step 1: Configure the Central Server</b><br>Edit <code>/etc/rsyslog.conf</code> to accept remote logs:<br><code>module(load=\"imtcp\")</code><br><code>input(type=\"imtcp\" port=\"514\")</code><br><br>Store incoming logs in organized directories:<br><code>template(name=\"RemoteLogs\" type=\"string\" string=\"/var/log/remote/%HOSTNAME%/%PROGRAMNAME%.log\")</code><br><code>*.* ?RemoteLogs</code><br>Restart: <code>systemctl restart rsyslog</code><br><br><b>Step 2: Configure Client Servers</b><br>On each client, add to <code>/etc/rsyslog.conf</code>:<br><code>*.* @@central-server-ip:514</code><br>The double @ means TCP (reliable). Single @ is UDP.<br><code>systemctl restart rsyslog</code><br><br><b>Step 3: Verify</b><br>Check logs arriving at the central server:<br><code>ls /var/log/remote/</code><br><code>tail -f /var/log/remote/client-hostname/sshd.log</code><br><br><b>Bonus: Log Rotation</b><br>Add <code>/etc/logrotate.d/remote</code> to prevent disk from filling up.<br><br>Now you have one dashboard for all server logs. Pair with <code>grep</code>, <code>tail</code>, or forward to Grafana Loki for even better visibility."
+  },
+  {
     "id": 6,
     "date": "14 Jun 2026",
     "title": "Zero Trust Architecture: What It Is and Why It Matters",
