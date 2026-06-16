@@ -1,5 +1,13 @@
 [
   {
+    "id": 8,
+    "date": "16 Jun 2026",
+    "title": "Automating Server Tasks with Ansible: A Practical Guide",
+    "category": "DevOps",
+    "summary": "Stop manually configuring servers one by one. Ansible lets you manage hundreds of servers from one control machine — agentless and simple.",
+    "content": "Ansible is an open-source automation tool that uses SSH to manage servers. No agents, no special setup on target machines — just Python and SSH.<br><br><b>Installation</b><br>On the control machine (your laptop or a dedicated server):<br><code>apt install ansible -y</code><br><br><b>Inventory File</b><br>Create <code>/etc/ansible/hosts</code>:<br><code>[webservers]</code><br><code>web1.example.com ansible_user=deploy</code><br><code>web2.example.com ansible_user=deploy</code><br><br><code>[databases]</code><br><code>db1.example.com ansible_user=deploy</code><br><br><b>First Playbook</b><br>Create <code>update.yml</code>:<br><code>---</code><br><code>- hosts: all</code><br><code>  become: yes</code><br><code>  tasks:</code><br><code>    - name: Update apt cache</code><br><code>      apt: update_cache=yes</code><br><code>    - name: Upgrade all packages</code><br><code>      apt: upgrade=dist</code><br><br>Run it: <code>ansible-playbook update.yml</code><br><br><b>Real-World Use Cases</b><br>• Install NGINX on 50 servers in 30 seconds<br>• Rotate logs and restart services on schedule<br>• Add users, deploy SSH keys, configure firewall<br>• Deploy Docker containers across your entire infrastructure<br><br><b>Pro Tip: Ansible Vault</b><br>Encrypt sensitive variables like passwords:<br><code>ansible-vault encrypt secrets.yml</code><br><br>Ansible turns hours of manual work into minutes of automation. Once you start, you will wonder how you ever managed servers without it."
+  },
+  {
     "id": 7,
     "date": "15 Jun 2026",
     "title": "Linux Log Management: Centralize Everything with rsyslog",
